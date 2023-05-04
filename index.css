@@ -270,15 +270,16 @@ nav ul li,
   .btn-shine {
     font-size: 20px !important;
   }
-
+.nav-link {
+  background-color: #30aacf ;
+}
   .nav-link li {
     font-size: 10px;
-    width: 60px !important;
+    width: 120px !important;
   }
 
   .nav-link a {
-    font-size: 10px;
-    width: 80px !important;
+    font-size: 16px;
   }
   
   .card-slider__background {
