@@ -190,20 +190,8 @@ nav ul,
 nav ul li,
 .menu-active ul li {
   display: inline-block;
-  width: 260px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-}
 
-nav ul li a {
-  display: block;
-  text-decoration: none;
-  color: #fff;
-  width: 100%;
-  height: 100%;
 }
-
 
 .contract {
   margin: auto auto !important;
@@ -274,13 +262,10 @@ nav ul li a {
   }
 
   .nav-link li {
-    font-size: 10px;
-    width: 80px !important;
   }
 
   .nav-link a {
-    font-size: 10px;
-    width: 80px !important;
+ba
   }
 
   .card-slider__background {
