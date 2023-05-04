@@ -262,12 +262,15 @@ nav ul li,
   }
 
   .nav-link li {
+    font-size: 10px;
+    width: 60px !important;
   }
 
   .nav-link a {
-ba
+    font-size: 10px;
+    width: 80px !important;
   }
-
+  
   .card-slider__background {
     height: 100vh !important;
     width: 100% !important;
