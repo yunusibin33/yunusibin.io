@@ -61,6 +61,16 @@
   padding: 0;
 }
 
+ .nav-link li {
+  width: 160px !important;
+}
+
+.nav-link a {
+  font-size: 22px;
+  width: 700px !important;
+  font-family: 'C-prot-light' !important;
+}
+
 .flex {
   /*Flexbox for containers*/
   display: flex;
@@ -258,7 +268,7 @@ nav ul li,
     height: 300px;
   }
   .btn-shine {
-    font-size: 24px !important;
+    font-size: 20px !important;
   }
 
   .nav-link li {
