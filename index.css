@@ -108,19 +108,18 @@
 background-image: url(./img/parcacklar-28136.mp4);
 }
 .sec2 {
-  background: rgb(73,58,58);
-  background: linear-gradient(158deg, rgba(73,58,58,0.9360119047619048) 6%, rgba(81,75,98,0.8127626050420168) 75%, rgba(108,71,107,0.6685049019607843) 92%);
-
+  background: rgb(0,0,0);
+  background: linear-gradient(315deg, rgba(0,0,0,0.9262079831932774) 54%, rgba(255,255,255,0.9486169467787114) 89%);
   min-height: 700px;
 }
 
 .sec3 {
-  background: #252525;
+  background: #5a5c5c86;
   min-height: 500px;
 }
 
 .sec4 {
-  background: #393a3a;
+  background: #746767a6;
   min-height: 500px;
 }
 
@@ -499,6 +498,7 @@ section {
 .about-text {
   font-family: 'C-prot-light';
   font-size: 22px;
+  color: #fff;
 }
 
 .effect1 {
@@ -886,7 +886,7 @@ section {
 
 .end {
   background: rgb(17, 99, 212);
-  background: linear-gradient(90deg, rgba(17, 99, 212, 0.8435749299719888) 3%, rgba(126, 35, 25, 0.8127626050420168) 51%, rgba(34, 33, 33, 1) 79%);
+  background: linear-gradient(90deg, rgba(101, 133, 173, 0.844) 3%, rgba(184, 167, 164, 0.813) 51%, rgb(80, 77, 77) 79%);
 }
 
 
@@ -1082,4 +1082,10 @@ main .clip-text {
     background-position: center;
     font-size: 50px;
   }
+}
+.last-text{
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
 }
