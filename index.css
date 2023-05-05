@@ -114,8 +114,8 @@ background-image: url(./img/parcacklar-28136.mp4);
 }
 
 .sec3 {
-  background: #5a5c5c86;
-  min-height: 500px;
+  background: #5e8f8f86;
+  min-height: 600px;
 }
 
 .sec4 {
@@ -530,10 +530,13 @@ section {
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+border-radius: 10px !important;
 }
 .effect1:hover {
   padding-right: 20px;
-  color: #fff;
+  color: #fff; 
+   text-decoration: none !important;
+   border-radius: 16px !important;
 }
 .effect1:hover .bg {
   height: 100%;
