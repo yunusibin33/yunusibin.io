@@ -196,11 +196,12 @@ background-image: url(./img/parcacklar-28136.mp4);
   }
 
   .sec2 {
-    height: 1300px;
+    height: 1400px;
   }
 
   .card.card0 {
     width: 100% !important;
+    margin-top: 130px !important;
   }
 
   .sec3 {
