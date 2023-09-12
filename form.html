@@ -103,8 +103,9 @@
                 <select id="complaint" name="complaint" onchange="adjustOptions()">
                     <option value="Cihazdan ses gelmiyor">Ses gelmiyor</option>
                     <option value="Boynuz kırık">Boynuz kırık</option>
-                    <option value="Bakıma yapılacak">Bakıma yapılacak</option>
-                    <option value="Bakıma yapılacak">Çalışıp duruyor</option>
+                    <option value="Bakım yapılacak">Bakım yapılacak</option>
+                    <option value="Çalışıp duruyor">Çalışıp duruyor</option>
+                    <option value="Montaj">Montaj</option>
                 </select><br>
                 <br>
                 <label for="company">Hangi Firmaya Gidecek:</label> <br><br>
@@ -118,7 +119,13 @@
                 <label for="date">Tarih Seçin:</label> <br>
                 <input type="date" id="date" name="date"> <br> <br>
 
-                <br><br>
+                <label for="sube">Şube Seçin:</label> <br> <br>
+                <select id="sube" name="sube" onchange="adjustOptions()">
+                    <option value="ŞUBE 1">ŞUBE 1</option>
+                    <option value="ŞUBE 2">ŞUBE 2</option>
+                    <option value="ŞUBE 3">ŞUBE 3</option>
+                    <option value="ŞUBE 4">ŞUBE 4</option>
+                </select><br>
                 <button type="button" onclick="printServiceDetails()">Yazdır</button>
             </form>
     </div>
@@ -130,8 +137,8 @@
             const company = document.getElementById('company').value;
             const date = document.getElementById('date').value;
             const seri = document.getElementById('seri').value;
-
-            const output = `Ad Soyad: ${name}\nTel: ${phone}\nSeri NO: ${seri}\nFirma: ${company}\nTarih: ${date}\nŞikayet: ${complaint}`;
+            const sube = document.getElementById('sube').value;
+            const output = `Ad Soyad: ${name}\nTel: ${phone}\nSeri NO: ${seri}\nFirma: ${company}\nTarih: ${date}\nŞikayet: ${complaint}\nŞube: ${sube}`;
 
             const printWindow = window.open('', '', 'width=1000,height=700');
             printWindow.document.open();
