@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknik Servis Takip Formu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #eecccc;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        background: rgb(73, 235, 227);
+        background: linear-gradient(-30deg, rgb(184, 243, 240) 36%, rgb(117, 153, 231) 63%);
+        max-width: 500px;
+        margin: 150px auto;
+        padding: 60px;
+        box-shadow: 0 0 6px 2px rgba(43, 62, 63, 0.3);
+    }
+
+    form {
+        text-align: left;
+    }
+
+    label {
+        font-weight: bolder;
+        color: #ffffff;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #1f53a0;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #name {
+        width: 90%;
+    }
+
+    #phone {
+        width: 90%;
+    }
+
+    #complaint {
+        width: 94%;
+        height: 37px;
+    }
+
+    #company {
+        width: 94%;
+        height: 37px;
+    }
+
+    .titleteknik {
+        color: rgb(255, 255, 255);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h3 style="text-align: center;" class="titleteknik">Teknik Servis Takip Formu</h1>
+            <form id="serviceForm">
+                <label for="name">Ad Soyad:</label> <br><br>
+                <input type="text" id="name" required><br><br>
+
+                <label for="phone">Tel :</label> <br> <br>
+                <input type="tel" id="phone" required pattern="[0-9]{10}"><br><br>
+
+
+                <label for="complaint">Şikayet Seçin:</label> <br> <br>
+                <select id="complaint" name="complaint" onchange="adjustOptions()">
+                    <option value="Cihazdan ses gelmiyor">Cihazdan ses gelmiyor</option>
+                    <option value="Boynuz kırık">Boynuz kırık</option>
+                    <option value="Bakıma yapılacak">Bakıma yapılacak</option>
+                </select><br>
+                <br>
+                <label for="company">Hangi Firmaya Gidecek:</label> <br><br>
+                <select id="company" name="company">
+                    <option value="A&M">A&M</option>
+                    <option value="Helix">Helix</option>
+                    <option value="Coselgi">Coselgi</option>
+                    <option value="boş">boş</option>
+                </select> <br> <br>
+
+                <label for="date">Tarih Seçin:</label> <br>
+                <input type="date" id="date" name="date"> <br> <br>
+
+                <br><br>
+                <button type="button" onclick="printServiceDetails()">Yazdır</button>
+            </form>
+    </div>
+    <script>
+        function printServiceDetails() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const complaint = document.getElementById('complaint').value;
+            const company = document.getElementById('company').value;
+            const date = document.getElementById('date').value;
+
+            const output = `Ad Soyad: ${name}\nTel: ${phone}\nFirma: ${company}\nTarih: ${date}\nŞikayet: ${complaint}`;
+
+            const printWindow = window.open('', '', 'width=1000,height=700');
+            printWindow.document.open();
+            printWindow.document.write(`<pre>${output}</pre>`);
+            printWindow.document.close();
+            printWindow.print();
+            printWindow.close();
+        }
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
