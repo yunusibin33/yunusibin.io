@@ -20,7 +20,7 @@
         background: linear-gradient(-30deg, rgb(184, 243, 240) 36%, rgb(117, 153, 231) 63%);
         max-width: 500px;
         margin: 40px auto;
-        padding: 60px;
+        padding: 10px 20px;
         box-shadow: 0 0 6px 2px rgba(43, 62, 63, 0.3);
     }
 
@@ -50,6 +50,8 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        margin-top: 10px;
+        margin-left: 210px;
     }
 
     button:hover {
@@ -70,13 +72,34 @@
     #complaint {
         width: 94%;
         height: 37px;
+        border: 1px solid rgb(218, 215, 215) !important;
+        border-radius: 4px;
     }
 
     #company {
         width: 94%;
         height: 37px;
+        border: 1px solid rgb(218, 215, 215) !important;
+        border-radius: 4px;
     }
 
+    #date {
+        width: 94%;
+        height: 37px;
+        border: 1px solid rgb(218, 215, 215) !important;
+        border-radius: 4px; 
+    }
+
+    #sube {
+        width: 94%;
+        height: 37px;
+        border: 1px solid rgb(218, 215, 215) !important;
+        border-radius: 4px; 
+    }
+
+    #serviceForm {
+        width: 525px;
+    }
     .titleteknik {
         color: rgb(255, 255, 255);
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -90,19 +113,20 @@
         <h3 style="text-align: center;" class="titleteknik">Teknik Servis Takip Formu</h1>
             <form id="serviceForm">
                 <label for="name">Ad Soyad:</label> <br><br>
-                <input type="text" id="name" required><br><br>
+                <input type="text" id="name" required><br>
 
                 <label for="phone">Tel :</label> <br> <br>
-                <input type="tel" id="phone" required pattern="[0-9]{10}"><br><br>
+                <input type="tel" id="phone" required pattern="[0-9]{10}"><br>
 
                 
                 <label for="seri">Seri No :</label> <br> <br>
-                <input type="tel" id="seri" required pattern="[0-9]{10}"><br><br>
+                <input type="tel" id="seri" required pattern="[0-9]{10}"><br>
 
                 <label for="complaint">Şikayet Seçin:</label> <br> <br>
                 <select id="complaint" name="complaint" onchange="adjustOptions()">
                     <option value="Cihazdan ses gelmiyor">Ses gelmiyor</option>
                     <option value="Boynuz kırık">Boynuz kırık</option>
+                    <option value="Cihaz Arızalı">Cihaz Arızalı</option>
                     <option value="Bakım yapılacak">Bakım yapılacak</option>
                     <option value="Çalışıp duruyor">Çalışıp duruyor</option>
                     <option value="Montaj">Montaj</option>
@@ -116,7 +140,7 @@
                     <option value="boş">boş</option>
                 </select> <br> <br>
 
-                <label for="date">Tarih Seçin:</label> <br>
+                <label for="date">Tarih Seçin:</label> <br><br>
                 <input type="date" id="date" name="date"> <br> <br>
 
                 <label for="sube">Şube Seçin:</label> <br> <br>
