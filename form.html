@@ -19,7 +19,7 @@
         background: rgb(73, 235, 227);
         background: linear-gradient(-30deg, rgb(184, 243, 240) 36%, rgb(117, 153, 231) 63%);
         max-width: 500px;
-        margin: 150px auto;
+        margin: 40px auto;
         padding: 60px;
         box-shadow: 0 0 6px 2px rgba(43, 62, 63, 0.3);
     }
@@ -63,6 +63,9 @@
     #phone {
         width: 90%;
     }
+    #seri {
+        width: 90%;
+    }
 
     #complaint {
         width: 94%;
@@ -92,12 +95,16 @@
                 <label for="phone">Tel :</label> <br> <br>
                 <input type="tel" id="phone" required pattern="[0-9]{10}"><br><br>
 
+                
+                <label for="seri">Seri No :</label> <br> <br>
+                <input type="tel" id="seri" required pattern="[0-9]{10}"><br><br>
 
                 <label for="complaint">Şikayet Seçin:</label> <br> <br>
                 <select id="complaint" name="complaint" onchange="adjustOptions()">
-                    <option value="Cihazdan ses gelmiyor">Cihazdan ses gelmiyor</option>
+                    <option value="Cihazdan ses gelmiyor">ses gelmiyor</option>
                     <option value="Boynuz kırık">Boynuz kırık</option>
                     <option value="Bakıma yapılacak">Bakıma yapılacak</option>
+                    <option value="Bakıma yapılacak">Çalışıp duruyor</option>
                 </select><br>
                 <br>
                 <label for="company">Hangi Firmaya Gidecek:</label> <br><br>
@@ -122,8 +129,9 @@
             const complaint = document.getElementById('complaint').value;
             const company = document.getElementById('company').value;
             const date = document.getElementById('date').value;
+            const seri = document.getElementById('seri').value;
 
-            const output = `Ad Soyad: ${name}\nTel: ${phone}\nFirma: ${company}\nTarih: ${date}\nŞikayet: ${complaint}`;
+            const output = `Ad Soyad: ${name}\nTel: ${phone}\nSeri NO: ${seri}\nFirma: ${company}\nTarih: ${date}\nŞikayet: ${complaint}`;
 
             const printWindow = window.open('', '', 'width=1000,height=700');
             printWindow.document.open();
