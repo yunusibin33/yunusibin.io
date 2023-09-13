@@ -19,9 +19,10 @@
         background: rgb(73, 235, 227);
         background: linear-gradient(-30deg, rgb(184, 243, 240) 36%, rgb(117, 153, 231) 63%);
         max-width: 500px;
-        margin: 40px auto;
+        margin: 15px 40px;
         padding: 10px 20px;
         box-shadow: 0 0 6px 2px rgba(43, 62, 63, 0.3);
+        border-radius: 14px;
     }
 
     form {
@@ -69,6 +70,42 @@
     button:hover {
         background-color: #0056b3;
     }
+
+    #nome  {
+        width: 90%;
+    }
+        #phane {
+            width: 90%;
+        }
+         #complant {
+            width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+         }
+
+        #compan {
+            width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+        }
+        #dute {
+            width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+        }
+        #keri {
+            width: 90%;
+        }
+
+        #lube {
+            width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+        }
 
     #name {
         width: 90%;
@@ -127,11 +164,17 @@
         font-weight: bold;
         font-size: 20px;
     }
+    .display {
+        display: flex;
+        justify-content: center;
+    }
 </style>
 
 <body>
+<div class="display">
     <div class="container">
         <h3 style="text-align: center;" class="titleteknik">Teknik Servis Takip Formu</h1>
+           <h3 style="text-align: center;">Firmaya Gidecek Olan</h3>
             <form id="serviceForm">
                 <label for="name">Ad Soyad:</label> <br><br>
                 <input type="text" id="name" required><br>
@@ -150,6 +193,7 @@
                     <option value="Cihaz Arızalı">Cihaz Arızalı</option>
                     <option value="Bakım yapılacak">Bakım yapılacak</option>
                     <option value="Çalışıp duruyor">Çalışıp duruyor</option>
+                    <option value="Çalışıp duruyor">cihaz bilgisayarı görmüyor</option>
                     <option value="Montaj">Montaj</option>
                 </select><br>
                 <br>
@@ -158,7 +202,7 @@
                     <option value="A&M">A&M</option>
                     <option value="Helix">Helix</option>
                     <option value="Coselgi">Coselgi</option>
-                    <option value="boş">boş</option>
+                    <option value="boş">TALHA</option>
                 </select> <br> <br>
 
                 <label for="date">Tarih Seçin:</label> <br><br>
@@ -166,7 +210,7 @@
 
                 <label for="sube">Şube Seçin:</label> <br> <br>
                 <select id="sube" name="sube" onchange="adjustOptions()">
-                    <option value="ŞUBE 1">ŞUBE 1</option>
+                    <option value="MERKEZ">MERKEZ</option>
                     <option value="ŞUBE 2">ŞUBE 2</option>
                     <option value="ŞUBE 3">ŞUBE 3</option>
                     <option value="ŞUBE 4">ŞUBE 4</option>
@@ -174,6 +218,53 @@
                 <button type="button" onclick="printServiceDetails()">Yazdır</button>
             </form>
     </div>
+    <div class="container">
+        <h3 style="text-align: center;" class="titleteknik">Teknik Servis Takip Formu</h1>
+            <h3 style="text-align: center;">Bizde Kalacak Olan</h3>
+            <form id="serviceForm">
+                <label for="nome">Ad Soyad:</label> <br><br>
+                <input type="text" id="nome" required><br>
+
+                <label for="phane">Tel :</label> <br> <br>
+                <input type="tel" id="phane" required pattern="[0-9]{10}"><br>
+
+                
+                <label for="keri">Seri No :</label> <br> <br>
+                <input type="tel" id="keri" required pattern="[0-9]{10}"><br>
+
+                <label for="complant">Şikayet Seçin:</label> <br> <br>
+                <select id="complant" name="complant" onchange="adjustOptions()">
+                    <option value="Cihazdan ses gelmiyor">Ses gelmiyor</option>
+                    <option value="Boynuz kırık">Boynuz kırık</option>
+                    <option value="Cihaz Arızalı">Cihaz Arızalı</option>
+                    <option value="Bakım yapılacak">Bakım yapılacak</option>
+                    <option value="Çalışıp duruyor">Çalışıp duruyor</option>
+                    <option value="Çalışıp duruyor">cihaz bilgisayarı görmüyor</option>
+                    <option value="Montaj">Montaj</option>
+                </select><br>
+                <br>
+                <label for="compan">Hangi Firmaya Gidecek:</label> <br><br>
+                <select id="compan" name="compan">
+                    <option value="A&M">A&M</option>
+                    <option value="Helix">Helix</option>
+                    <option value="Coselgi">Coselgi</option>
+                    <option value="boş">TALHA</option>
+                </select> <br> <br>
+
+                <label for="dute">Tarih Seçin:</label> <br><br>
+                <input type="date" id="dute" name="dute"> <br> <br>
+
+                <label for="lube">Şube Seçin:</label> <br> <br>
+                <select id="lube" name="lube" onchange="adjustOptions()">
+                    <option value="MERKEZ">MERKEZ</option>
+                    <option value="ŞUBE 2">ŞUBE 2</option>
+                    <option value="ŞUBE 3">ŞUBE 3</option>
+                    <option value="ŞUBE 4">ŞUBE 4</option>
+                </select><br>
+                <button type="button" onclick="printServiceDetailt()">Yazdır</button>
+            </form>
+    </div>
+</div>
     <script>
         function printServiceDetails() {
             const name = document.getElementById('name').value;
@@ -184,6 +275,24 @@
             const seri = document.getElementById('seri').value;
             const sube = document.getElementById('sube').value;
             const output = `Ad Soyad: ${name}\nTel: ${phone}\nSeri NO: ${seri}\nFirma: ${company}\nTarih: ${date}\nŞikayet: ${complaint}\nŞube: ${sube}`;
+
+            const printWindow = window.open('', '', 'width=1000,height=700');
+            printWindow.document.open();
+            printWindow.document.write(`<pre>${output}</pre>`);
+            printWindow.document.close();
+            printWindow.print();
+            printWindow.close();
+        }
+
+        function printServiceDetailt() {
+            const nome = document.getElementById('nome').value;
+            const phane = document.getElementById('phane').value;
+            const complant = document.getElementById('complant').value;
+            const compan = document.getElementById('compan').value;
+            const dute = document.getElementById('dute').value;
+            const keri = document.getElementById('keri').value;
+            const lube = document.getElementById('lube').value;
+            const output = `Ad Soyad: ${nome}\nTel: ${phane}\nSeri NO: ${keri}\nFirma: ${compan}\nTarih: ${dute}\nŞikayet: ${complant}\nŞube: ${lube}`;
 
             const printWindow = window.open('', '', 'width=1000,height=700');
             printWindow.document.open();
