@@ -210,8 +210,9 @@
                     <label for="seri">Seri No :</label> <br> <br>
                     <input type="tel" id="seri" placeholder="SN:196841" required pattern="[0-9]{10}"><br>
 
-                      <label for="complant">Şikayet :</label> <br> <br>
-                    <textarea id="complaint" name="complaint" rows="4" cols="50"></textarea><br>
+                    <label for="complaint">Şikayet Yazınız:</label> <br> <br>
+                    <textarea id="complaint" name="complaint" rows="4" cols="50" oninput="insertLineBreak(this)"></textarea>
+                    <br>
                     <br>
                     <label for="company">Hangi Firmaya Gidecek:</label> <br><br>
                     <select id="company" name="company">
@@ -248,8 +249,8 @@
                     <label for="keri">Seri No :</label> <br> <br>
                     <input type="tel" id="keri" placeholder="SN:23774257" required pattern="[0-9]{10}"><br>
 
-                    <label for="complant">Şikayet :</label> <br> <br>
-                    <textarea id="complant" name="complant" rows="4" cols="50"></textarea>
+                    <label for="complant">Şikayet Yazınız:</label> <br> <br>
+                    <textarea id="complant" name="complant" rows="4" cols="50" oninput="insertLineBreak(this)"></textarea>
                     <br>
                     <br>
                     <label for="compan">Hangi Firmaya Gidecek:</label> <br><br>
@@ -274,6 +275,23 @@
                 </form>
         </div>
     </div>
+    <script>
+        function insertLineBreak(textarea) {
+            var maxLength = 20; // İstenen karakter sınırı
+        
+            if (textarea.value.length >= maxLength) {
+                var currentPosition = textarea.selectionStart;
+                var currentText = textarea.value;
+        
+                if (currentPosition == maxLength) {
+                    var newText = currentText.slice(0, currentPosition) + '\n' + currentText.slice(currentPosition);
+                    textarea.value = newText;
+                    textarea.selectionStart = currentPosition + 1; // İmleci doğru konuma ayarla
+                    textarea.selectionEnd = currentPosition + 1;
+                }
+            }
+        }
+        </script>
     <script>
         function printServiceDetails() {
             const name = document.getElementById('name').value;
