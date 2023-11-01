@@ -103,17 +103,10 @@
       align-items: center;
     }
 
-    .img-thumbnail {
-    max-height: 400px;
-    width: 100%;
-    height: 100px;
-  }
-
-  .lightbox img {
-    max-height: 80vh;
-    max-width: 80%;
-  }
-
+    .lightbox img {
+      max-height: 80vh;
+      max-width: 80%;
+    }
 
     .person-info {
       display: flex;
@@ -140,10 +133,6 @@
           <input type="text" class="form-control" id="lastName" name="lastName" required>
         </div>
         <div class="col-md-4 mb-3">
-            <label for="cameraInput" class="camera-button btn btn-success">
-                <span>&#128247;</span> Kamerayı Aç
-                <input type="file" accept="image/*" capture="camera" id="cameraInput" style="display:none" onchange="handleCameraInput(event)">
-              </label>
           <label for="image">Resim Yükle:</label>
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="image" name="image" accept="image/*">
@@ -151,13 +140,13 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" onclick="addPerson()">Kişiyi Ekle</button>
+      <button type="button" class="btn btn-primary" onclick="prepareImage()">Kişiyi Ekle</button>
     </form>
 
-
-
-
-  
+    <label for="cameraInput" class="camera-button btn btn-success">
+      <span>&#128247;</span> Kamerayı Aç
+      <input type="file" accept="image/*" capture="camera" id="cameraInput" style="display:none" onchange="handleCameraInput(event)">
+    </label>
 
     <table class="table mt-3" id="personTable">
       <thead>
@@ -183,20 +172,18 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyFq1DOmpREeK3I5w0z1uX1p5V7Uq6m1x" crossorigin="anonymous"></script>
   <!-- Custom JS -->
   <script>
-    function addPerson() {
+    var preparedImage;
+
+    function prepareImage() {
       // Formdaki verileri al
       var firstName = document.getElementById('firstName').value;
       var lastName = document.getElementById('lastName').value;
       var imageInput = document.getElementById('image');
-      var image = imageInput.files[0]; // Resim dosyası nesnesini al
+      preparedImage = imageInput.files[0]; // Resim dosyası nesnesini al
+      addPerson(firstName, lastName, preparedImage);
+    }
 
-      // Görüntüyü sınırla (örneğin, 500 KB'ye kadar)
-      var maxSizeKB = 1500;
-      if (image.size > maxSizeKB * 2024) {
-        alert('Görüntü boyutu çok büyük! 2500 KB\'dan küçük bir görüntü seçin.');
-        return;
-      }
-
+    function addPerson(firstName, lastName, image) {
       // Tabloya yeni bir satır ekle
       var table = document.getElementById('personTable').getElementsByTagName('tbody')[0];
       var newRow = table.insertRow(table.rows.length);
@@ -235,33 +222,7 @@
 
     function handleCameraInput(event) {
       var image = event.target.files[0];
-
-      // Görüntüyü sınırla (örneğin, 500 KB'ye kadar)
-      var maxSizeKB = 3500;
-      if (image.size > maxSizeKB * 4024) {
-        alert('Görüntü boyutu çok büyük! 500 KB\'dan küçük bir görüntü seçin.');
-        return;
-      }
-
-      // Tabloya yeni bir satır ekle
-      var table = document.getElementById('personTable').getElementsByTagName('tbody')[0];
-      var newRow = table.insertRow(table.rows.length);
-      var cell1 = newRow.insertCell(0);
-      var cell2 = newRow.insertCell(1);
-      var cell3 = newRow.insertCell(2);
-
-      // Kişi bilgilerini içeren bir div oluştur
-      var personInfoDiv = document.createElement('div');
-      personInfoDiv.classList.add('person-info');
-
-      // Resmi içeren bir div oluştur
-      var imageDiv = document.createElement('div');
-      imageDiv.innerHTML = `<img src="${URL.createObjectURL(image)}" alt="Kamera Çekimi" class="img-thumbnail" onclick="openLightbox('${URL.createObjectURL(image)}')">`;
-
-      // İlgili hücrelere div'leri ekle
-      cell1.appendChild(personInfoDiv);
-      cell2.innerHTML = `<strong>Kamera</strong>`;
-      cell3.appendChild(imageDiv);
+      preparedImage = image;
     }
 
     document.getElementById('lightbox').addEventListener('click', function() {
