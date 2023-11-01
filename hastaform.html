@@ -99,11 +99,16 @@
       align-items: center;
     }
 
-    .lightbox img {
-      max-height: 80vh;
-      max-width: 80%;
-    }
+    .img-thumbnail {
+  max-height: 60vh;
+  width:60%;
+  height: 200px;
+}
 
+.lightbox img {
+  max-height: 80vh;
+  max-width: 80%;
+}
     .person-info {
       display: flex;
       align-items: center;
@@ -129,14 +134,12 @@
           <input type="text" class="form-control" id="lastName" name="lastName" required>
         </div>
       </div>
+      <label for="cameraInput" class="camera-button btn btn-success">
+        <span>&#128247;</span> Kamerayı Aç
+        <input type="file" accept="image/*" capture="camera" id="cameraInput" style="display:none" onchange="handleCameraInput(event)">
+      </label>
       <button type="button" class="btn btn-primary" onclick="prepareImage()">Kişiyi Ekle</button>
     </form>
-
-    <label for="cameraInput" class="camera-button btn btn-success">
-      <span>&#128247;</span> Kamerayı Aç
-      <input type="file" accept="image/*" capture="camera" id="cameraInput" style="display:none" onchange="handleCameraInput(event)">
-    </label>
-
     <table class="table mt-3" id="personTable">
       <thead>
         <tr>
@@ -189,7 +192,11 @@
 
       // Ad ve soyad bilgilerini içeren bir div oluştur
       var nameDiv = document.createElement('div');
-      nameDiv.innerHTML = `<strong>${firstName}</strong> ${lastName}`;
+      nameDiv.innerHTML = `<strong>${firstName}</strong>`;
+
+      // Soyadı içeren bir div oluştur
+      var lastNameDiv = document.createElement('div');
+      lastNameDiv.innerHTML = lastName;
 
       // Resmi içeren bir div oluştur
       var imageDiv = document.createElement('div');
@@ -197,7 +204,8 @@
 
       // İlgili hücrelere div'leri ekle
       cell1.appendChild(personInfoDiv);
-      cell2.appendChild(nameDiv);
+      personInfoDiv.appendChild(nameDiv);
+      personInfoDiv.appendChild(lastNameDiv);
       cell3.appendChild(imageDiv);
 
       // Formu sıfırla
@@ -223,3 +231,5 @@
   </script>
 </body>
 </html>
+
+
