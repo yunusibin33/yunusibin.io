@@ -103,10 +103,17 @@
       align-items: center;
     }
 
-    .lightbox img {
-      max-width: 80%;
-      max-height: 80%;
-    }
+    .img-thumbnail {
+    max-height: 60vh;
+    width: 100%;
+    height: auto;
+  }
+
+  .lightbox img {
+    max-height: 80vh;
+    max-width: 80%;
+  }
+
 
     .person-info {
       display: flex;
@@ -133,6 +140,10 @@
           <input type="text" class="form-control" id="lastName" name="lastName" required>
         </div>
         <div class="col-md-4 mb-3">
+            <label for="cameraInput" class="camera-button btn btn-success">
+                <span>&#128247;</span> Kamerayı Aç
+                <input type="file" accept="image/*" capture="camera" id="cameraInput" style="display:none" onchange="handleCameraInput(event)">
+              </label>
           <label for="image">Resim Yükle:</label>
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="image" name="image" accept="image/*">
@@ -143,10 +154,10 @@
       <button type="button" class="btn btn-primary" onclick="addPerson()">Kişiyi Ekle</button>
     </form>
 
-    <label for="cameraInput" class="camera-button btn btn-success">
-      Kamerayı Aç
-      <input type="file" accept="image/*" capture="camera" id="cameraInput" style="display:none" onchange="handleCameraInput(event)">
-    </label>
+
+
+
+  
 
     <table class="table mt-3" id="personTable">
       <thead>
@@ -180,8 +191,8 @@
       var image = imageInput.files[0]; // Resim dosyası nesnesini al
 
       // Görüntüyü sınırla (örneğin, 500 KB'ye kadar)
-      var maxSizeKB = 500;
-      if (image.size > maxSizeKB * 1024) {
+      var maxSizeKB = 1500;
+      if (image.size > maxSizeKB * 2024) {
         alert('Görüntü boyutu çok büyük! 500 KB\'dan küçük bir görüntü seçin.');
         return;
       }
