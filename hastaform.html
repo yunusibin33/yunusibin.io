@@ -52,10 +52,6 @@
       border-radius: 4px;
     }
 
-    input[type="file"] {
-      cursor: pointer;
-    }
-
     .camera-button {
       background-color: #28a745;
       color: #fff;
@@ -103,16 +99,10 @@
       align-items: center;
     }
 
-    .img-thumbnail {
-    max-height: 60vh;
-    width: 100%;
-    height: auto;
-  }
-
-  .lightbox img {
-    max-height: 80vh;
-    max-width: 80%;
-  }
+    .lightbox img {
+      max-height: 80vh;
+      max-width: 80%;
+    }
 
     .person-info {
       display: flex;
@@ -130,20 +120,13 @@
   <div class="container">
     <form id="personForm">
       <div class="form-row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-6 mb-3">
           <label for="firstName">Ad:</label>
           <input type="text" class="form-control" id="firstName" name="firstName" required>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-6 mb-3">
           <label for="lastName">Soyad:</label>
           <input type="text" class="form-control" id="lastName" name="lastName" required>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="image">Resim Yükle:</label>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="image" name="image" accept="image/*">
-            <label class="custom-file-label" for="image">Dosya seçin...</label>
-          </div>
         </div>
       </div>
       <button type="button" class="btn btn-primary" onclick="prepareImage()">Kişiyi Ekle</button>
@@ -184,12 +167,15 @@
       // Formdaki verileri al
       var firstName = document.getElementById('firstName').value;
       var lastName = document.getElementById('lastName').value;
-      var imageInput = document.getElementById('image');
-      preparedImage = imageInput.files[0]; // Resim dosyası nesnesini al
       addPerson(firstName, lastName, preparedImage);
     }
 
     function addPerson(firstName, lastName, image) {
+      if (!image) {
+        alert('Lütfen bir fotoğraf çekin.');
+        return;
+      }
+
       // Tabloya yeni bir satır ekle
       var table = document.getElementById('personTable').getElementsByTagName('tbody')[0];
       var newRow = table.insertRow(table.rows.length);
@@ -204,7 +190,7 @@
       // Ad ve soyad bilgilerini içeren bir div oluştur
       var nameDiv = document.createElement('div');
       nameDiv.innerHTML = `<strong>${firstName}</strong> ${lastName}`;
-      
+
       // Resmi içeren bir div oluştur
       var imageDiv = document.createElement('div');
       imageDiv.innerHTML = `<img src="${URL.createObjectURL(image)}" alt="${firstName} ${lastName}" class="img-thumbnail" onclick="openLightbox('${URL.createObjectURL(image)}')">`;
