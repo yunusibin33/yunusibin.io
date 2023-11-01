@@ -176,7 +176,15 @@
       // Formdaki verileri al
       var firstName = document.getElementById('firstName').value;
       var lastName = document.getElementById('lastName').value;
-      var image = document.getElementById('image').files[0]; // Resim dosyası nesnesini al
+      var imageInput = document.getElementById('image');
+      var image = imageInput.files[0]; // Resim dosyası nesnesini al
+
+      // Görüntüyü sınırla (örneğin, 500 KB'ye kadar)
+      var maxSizeKB = 500;
+      if (image.size > maxSizeKB * 1024) {
+        alert('Görüntü boyutu çok büyük! 500 KB\'dan küçük bir görüntü seçin.');
+        return;
+      }
 
       // Tabloya yeni bir satır ekle
       var table = document.getElementById('personTable').getElementsByTagName('tbody')[0];
@@ -216,6 +224,13 @@
 
     function handleCameraInput(event) {
       var image = event.target.files[0];
+
+      // Görüntüyü sınırla (örneğin, 500 KB'ye kadar)
+      var maxSizeKB = 500;
+      if (image.size > maxSizeKB * 1024) {
+        alert('Görüntü boyutu çok büyük! 500 KB\'dan küçük bir görüntü seçin.');
+        return;
+      }
 
       // Tabloya yeni bir satır ekle
       var table = document.getElementById('personTable').getElementsByTagName('tbody')[0];
