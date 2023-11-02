@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kişiyi Ekle</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyFq1DOmpREeK3I5w0z1uX1p5V7Uq6m1x" crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border-radius: 8px;
+    }
+
+    form, table {
+      margin-top: 20px;
+    }
+
+    form {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+    }
+
+    .camera-button {
+      background-color: #28a745;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-thumbnail {
+  max-height: 60vh;
+  width:60%;
+  height: 200px;
+}
+
+.lightbox img {
+  max-height: 80vh;
+  max-width: 80%;
+}
+    .person-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .person-info img {
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  </style>
+    <script src="script.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <form id="personForm">
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="firstName">Ad:</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Soyad:</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+      </div>
+      <label for="cameraInput" class="camera-button btn btn-success">
+        <span>&#128247;</span> Kamerayı Aç
+        <input type="file" accept="image/*" capture="camera" id="cameraInput" style="display:none" onchange="handleCameraInput(event)">
+      </label>
+      <button type="button" class="btn btn-primary" onclick="prepareImage()">Kişiyi Ekle</button>
+    </form>
+    <table class="table mt-3" id="personTable">
+      <thead>
+        <tr>
+          <th>Ad</th>
+          <th>Soyad</th>
+          <th>Resim</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Buraya eklenen kişiler gelecek -->
+      </tbody>
+    </table>
+
+    <div class="lightbox" id="lightbox">
+      <img src="" alt="Lightbox Image" id="lightboxImage">
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyFq1DOmpREeK3I5w0z1uX1p5V7Uq6m1x" crossorigin="anonymous"></script>
+  <!-- Custom JS -->
+  <script>
+    var preparedImage;
+
+    function prepareImage() {
+      // Formdaki verileri al
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+      addPerson(firstName, lastName, preparedImage);
+    }
+
+    function addPerson(firstName, lastName, image) {
+      if (!image) {
+        alert('Lütfen bir fotoğraf çekin.');
+        return;
+      }
+
+      // Tabloya yeni bir satır ekle
+      var table = document.getElementById('personTable').getElementsByTagName('tbody')[0];
+      var newRow = table.insertRow(table.rows.length);
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+
+      // Kişi bilgilerini içeren bir div oluştur
+      var personInfoDiv = document.createElement('div');
+      personInfoDiv.classList.add('person-info');
+
+      // Ad ve soyad bilgilerini içeren bir div oluştur
+      var nameDiv = document.createElement('div');
+      nameDiv.innerHTML = `<strong>${firstName}</strong>`;
+
+      // Soyadı içeren bir div oluştur
+      var lastNameDiv = document.createElement('div');
+      lastNameDiv.innerHTML = lastName;
+
+      // Resmi içeren bir div oluştur
+      var imageDiv = document.createElement('div');
+      imageDiv.innerHTML = `<img src="${URL.createObjectURL(image)}" alt="${firstName} ${lastName}" class="img-thumbnail" onclick="openLightbox('${URL.createObjectURL(image)}')">`;
+
+      // İlgili hücrelere div'leri ekle
+      cell1.appendChild(personInfoDiv);
+      personInfoDiv.appendChild(nameDiv);
+      personInfoDiv.appendChild(lastNameDiv);
+      cell3.appendChild(imageDiv);
+
+      // Formu sıfırla
+      document.getElementById('personForm').reset();
+    }
+
+    function openLightbox(imageSrc) {
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImage = document.getElementById('lightboxImage');
+
+      lightboxImage.src = imageSrc;
+      lightbox.style.display = 'flex';
+    }
+
+    function handleCameraInput(event) {
+      var image = event.target.files[0];
+      preparedImage = image;
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function() {
+      document.getElementById('lightbox').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
+
+
