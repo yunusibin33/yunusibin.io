@@ -13,8 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Yerel depolamadan çekilen kişileri tabloya ekle
     storedPersons.forEach(person => {
-      addPersonToTable(person.firstName, person.lastName, person.imageData);
+      addPersonToTable(person.firstName, person.lastName, person.image);
     });
+    
   
     // Sonra MongoDB'den kişileri çek ve tabloyu güncelle
     const response = await fetch('http://localhost:3000/getPersons');
@@ -30,6 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // Kişiyi tabloya ekle
   function addPersonToTable(firstName, lastName, imageData) {
+    if (!imageData) {
+      alert('Lütfen bir fotoğraf çekin.');
+      return;
+    }
     const table = document.getElementById('personTable').getElementsByTagName('tbody')[0];
     const newRow = table.insertRow(table.rows.length);
     const cell1 = newRow.insertCell(0);
@@ -49,7 +54,27 @@ document.addEventListener('DOMContentLoaded', function () {
     personInfoDiv.appendChild(nameDiv);
     personInfoDiv.appendChild(lastNameDiv);
     cell3.appendChild(imageDiv);
-  }
+}
+
   
   // Diğer fonksiyonlar...
+  async function prepareImage() {
+    // Diğer kodlar...
+  
+    // Sunucuya resmi gönder
+    const formData = new FormData();
+    formData.append('image', preparedImage);
+    
+    try {
+      const response = await fetch('http://localhost:3000/addPerson', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      const result = await response.json();
+      console.log(result); // Sunucudan gelen cevap
+    } catch (error) {
+      console.error('Hata:', error);
+    }
+  }
   
