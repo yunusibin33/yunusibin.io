@@ -11,52 +11,77 @@
     <!-- Custom CSS -->
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #7daedb;
             padding: 20px;
+            font-size: 18px; /* Varsayılan font büyüklüğünü ayarlayabilirsin */
         }
-
+    
         form {
-            max-width: 600px;
+            max-width: 80%;
             margin: auto;
             background-color: #fff;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
-
+    
         h1 {
             text-align: center;
             color: #007bff;
         }
-
-        .gelir-listesi, .gider-listesi {
+    
+        .gelir-listesi, .gider-listesi, .islem-listesi {
             list-style-type: none;
             padding: 0;
             margin-top: 15px;
+            background-color: #103b5a; /* Gelir ve Gider Listesi Arka Plan Rengi */
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
         }
-
-        .gelir-listesi li, .gider-listesi li {
+    
+        .gelir-listesi li, .gider-listesi li, .islem-listesi li {
             margin-bottom: 5px;
         }
-
+    
+        #kasaDurumu {
+            background-color: #103b5a; /* Kasa Durumu Arka Plan Rengi */
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            color: white;
+        }
+    
         button {
             width: 100%;
             margin-top: 15px;
         }
-
+    
         .icon {
             font-size: 24px;
             margin-right: 10px;
         }
+        .arka {
+            background-color: rgb(215, 240, 231);
+            padding: 20px;
+            border-radius: 10px;
+            gap: 10px !important;
+        }
     </style>
+    
+  
+
+    
 </head>
 <body>
 
-    <h1>Günlük Finans Takip Formu</h1>
+
 
     <form>
+        <h1>Günlük Finans Takip Formu</h1>
         <div class="d-flex">
-        <div class="col-6">
+        <div class="col-6 arka">
+
         <div class="form-group">
             <label for="gelirMiktari">Gelir Miktarı:</label>
             <input type="number" class="form-control" id="gelirMiktari" required>
@@ -69,7 +94,7 @@
         <h3 class="mt-3">Gelir Listesi:</h3>
         <ul class="gelir-listesi" id="gelirListesi"></ul>
     </div>
-    <div class="col-6">
+    <div class="col-6 arka">
         <div class="form-group">
             <label for="giderMiktari">Gider Miktarı:</label>
             <input type="number" class="form-control" id="giderMiktari" required>
@@ -87,10 +112,15 @@
             <label for="kalanPara">Kasada Kalan Para:</label>
             <input type="number" class="form-control" id="kalanPara" required>
         </div>
+        <h3>Yapılan İşlemler:</h3>
+        <ul class="islem-listesi" id="islemListesi"></ul>
+        <h3>Kasa Durumu:</h3>
+<p id="kasaDurumu"></p>
 
         <button type="button" class="btn btn-primary" onclick="hesapla()">
             <span class="icon">&#61;</span> Hesapla
         </button>
+        
     </form>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -98,55 +128,78 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        function gelirEkle() {
-            var gelirMiktari = parseFloat(document.getElementById('gelirMiktari').value);
+function gelirEkle() {
+    var gelirMiktari = parseFloat(document.getElementById('gelirMiktari').value);
 
-            var gelirListesi = document.getElementById('gelirListesi');
-            var yeniGelir = document.createElement('li');
-            yeniGelir.textContent = "Gelir: " + gelirMiktari.toFixed(2);
-            gelirListesi.appendChild(yeniGelir);
+    var gelirListesi = document.getElementById('gelirListesi');
+    var yeniGelir = document.createElement('li');
+    yeniGelir.textContent = "Gelir: " + gelirMiktari.toFixed(2);
+    gelirListesi.appendChild(yeniGelir);
 
-            // Formu temizle
-            document.getElementById('gelirMiktari').value = '';
-        }
+    // İşlem listesine ekle
+    var islemListesi = document.getElementById('islemListesi');
+    var yeniIslem = document.createElement('li');
+    yeniIslem.textContent = "Gelir eklendi: " + gelirMiktari.toFixed(2);
+    islemListesi.appendChild(yeniIslem);
 
-        function giderEkle() {
-            var giderMiktari = parseFloat(document.getElementById('giderMiktari').value);
+    // Formu temizle
+    document.getElementById('gelirMiktari').value = '';
+}
 
-            var giderListesi = document.getElementById('giderListesi');
-            var yeniGider = document.createElement('li');
-            yeniGider.textContent = "Gider: " + giderMiktari.toFixed(2);
-            giderListesi.appendChild(yeniGider);
+function giderEkle() {
+    var giderMiktari = parseFloat(document.getElementById('giderMiktari').value);
 
-            // Formu temizle
-            document.getElementById('giderMiktari').value = '';
-        }
+    var giderListesi = document.getElementById('giderListesi');
+    var yeniGider = document.createElement('li');
+    yeniGider.textContent = "Gider: " + giderMiktari.toFixed(2);
+    giderListesi.appendChild(yeniGider);
 
-        function hesapla() {
-            var kalanPara = parseFloat(document.getElementById('kalanPara').value);
+    // İşlem listesine ekle
+    var islemListesi = document.getElementById('islemListesi');
+    var yeniIslem = document.createElement('li');
+    yeniIslem.textContent = "Gider eklendi: " + giderMiktari.toFixed(2);
+    islemListesi.appendChild(yeniIslem);
 
-            // Gelirleri topla
-            var gelirListesi = document.getElementById('gelirListesi');
-            var gelirler = gelirListesi.getElementsByTagName('li');
-            var toplamGelir = 0;
-            for (var i = 0; i < gelirler.length; i++) {
-                var gelir = parseFloat(gelirler[i].textContent.split(":")[1]);
-                toplamGelir += gelir;
-            }
+    // Formu temizle
+    document.getElementById('giderMiktari').value = '';
+}
+function hesapla() {
+    var kalanPara = parseFloat(document.getElementById('kalanPara').value);
 
-            // Giderleri topla
-            var giderListesi = document.getElementById('giderListesi');
-            var giderler = giderListesi.getElementsByTagName('li');
-            var toplamGider = 0;
-            for (var i = 0; i < giderler.length; i++) {
-                var gider = parseFloat(giderler[i].textContent.split(":")[1]);
-                toplamGider += gider;
-            }
+    // Gelirleri topla
+    var gelirListesi = document.getElementById('gelirListesi');
+    var gelirler = gelirListesi.getElementsByTagName('li');
+    var toplamGelir = 0;
+    for (var i = 0; i < gelirler.length; i++) {
+        var gelir = parseFloat(gelirler[i].textContent.split(":")[1]);
+        toplamGelir += gelir;
+    }
 
-            var toplam = toplamGelir + kalanPara - toplamGider;
+    // Giderleri topla
+    var giderListesi = document.getElementById('giderListesi');
+    var giderler = giderListesi.getElementsByTagName('li');
+    var toplamGider = 0;
+    for (var i = 0; i < giderler.length; i++) {
+        var gider = parseFloat(giderler[i].textContent.split(":")[1]);
+        toplamGider += gider;
+    }
 
-            alert("Kasada kalan toplam para: " + toplam.toFixed(2));
-        }
+    var toplam = toplamGelir + kalanPara - toplamGider;
+
+    // İşlem listesine ekle
+    var islemListesi = document.getElementById('islemListesi');
+    var yeniIslem = document.createElement('li');
+    yeniIslem.textContent = "Gelir Toplamı: " + toplamGelir.toFixed(2) +
+                          ", Gider Toplamı: " + toplamGider.toFixed(2) +
+                          ", Sonuç: " + toplam.toFixed(2);
+    islemListesi.appendChild(yeniIslem);
+
+    // Kasa Durumu göster
+    var kasaDurumu = document.getElementById('kasaDurumu');
+    kasaDurumu.textContent = "Kasa Durumu: " + toplam.toFixed(2);
+}
+
+
     </script>
 
 </body>
