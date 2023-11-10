@@ -50,20 +50,17 @@ app.get('/api/allusers', async (req, res) => {
   }
 });
 
-// Kullanıcı silme endpoint'i
 app.delete('/api/deleteuser/:id', async (req, res) => {
   const userId = req.params.id;
 
   try {
-    const deletedUser = await User.findByIdAndDelete(userId);
+      // Silme işlemi burada gerçekleştirilir
+      await User.findByIdAndDelete(userId);
 
-    if (!deletedUser) {
-      return res.status(404).json({ error: 'Silinen kullanıcı bulunamadı.' });
-    }
-
-    res.json(deletedUser);
+      res.json({ success: true });
   } catch (error) {
-    res.status(500).json({ error: 'Kullanıcı silinirken bir hata oluştu.' });
+      console.error('Error:', error);
+      res.status(500).json({ error: 'Kullanıcı silinirken bir hata oluştu.' });
   }
 });
 
