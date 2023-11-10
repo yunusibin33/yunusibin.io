@@ -50,6 +50,24 @@ app.get('/api/allusers', async (req, res) => {
   }
 });
 
+// Kullanıcı silme endpoint'i
+app.delete('/api/deleteuser/:id', async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ error: 'Silinen kullanıcı bulunamadı.' });
+    }
+
+    res.json(deletedUser);
+  } catch (error) {
+    res.status(500).json({ error: 'Kullanıcı silinirken bir hata oluştu.' });
+  }
+});
+
+
 // Public dizinindeki dosyaları servis etmek için
 app.use(express.static(path.join(__dirname, 'public')));
 
