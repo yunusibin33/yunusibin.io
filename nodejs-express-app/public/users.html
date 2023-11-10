@@ -1,44 +1,67 @@
-<!-- users.html -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/nodejs-express-app/public/cdn/bootstrap.min.css" rel="stylesheet" integrity="sha384-wVUrs7IkpGJpKxx7ln1A1JKnFFAvPDZx2pMWItGQDTEI/tfOk2UtmUc9bPbREHJp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css"> <!-- Eklenen satır -->
-  <title>Kullanıcıları Görüntüle</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+        crossorigin="anonymous">
+    <title>Users</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="container">
+        <h2>Users</h2>
+        <ul id="userList" class="list-group mb-3"></ul>
+    </div>
 
-<div class="container mt-5">
-  <h2>Kullanıcıları Görüntüle</h2>
-  <ul id="userList" class="list-group">
-    <!-- Kullanıcı listesi buraya eklenecek -->
-  </ul>
-</div>
+    <script>
+        function fetchUsers() {
+            fetch('http://localhost:3000/api/allusers')
+                .then(response => response.json())
+                .then(users => {
+                    const userList = document.getElementById('userList');
+                    userList.innerHTML = '';
 
-<script src="/nodejs-express-app/public/cdn/bootstrap.bundle.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofNl+4+0tKVoFjK8Ad9DSd8Yq4MOwMV6C" crossorigin="anonymous"></script>
-<script>
-  function updateUserList() {
-    fetch('http://localhost:3000/api/allusers')
-      .then(response => response.json())
-      .then(users => {
-        const userListElement = document.getElementById('userList');
-        userListElement.innerHTML = ''; // Liste içeriğini temizle
+                    users.forEach(user => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+                        listItem.innerHTML = `
+                            ${user.firstName} ${user.lastName}
+                            <button class="btn btn-danger" onclick="deleteUser('${user._id}')">Delete</button>
+                        `;
+                        userList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
 
-        users.forEach(user => {
-          const listItem = document.createElement('li');
-          listItem.className = 'list-group-item';
-          listItem.textContent = `${user.firstName} ${user.lastName}`;
-          userListElement.appendChild(listItem);
-        });
-      })
-      .catch(error => console.error('Error:', error));
-  }
+        function deleteUser(userId) {
+            fetch(`http://localhost:3000/api/deleteuser/${userId}`, {
+                method: 'DELETE',
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    fetchUsers(); // Yeniden kullanıcıları getir
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
 
-  // Sayfa yüklendiğinde kullanıcı listesini güncelle
-  window.onload = updateUserList;
-</script>
+        // Sayfa yüklendiğinde kullanıcıları getir
+        document.addEventListener('DOMContentLoaded', fetchUsers);
+    </script>
 </body>
+
 </html>
