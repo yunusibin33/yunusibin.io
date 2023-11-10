@@ -1,9 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path'); // Eklenen satır
+const path = require('path');
+const cors = require('cors'); // CORS eklendi
 
 const app = express();
 const port = 3000;
+
+// CORS middleware'i eklendi
+app.use(cors());
 
 // MongoDB bağlantısı
 mongoose.connect('mongodb://localhost:27017/kullanicilar', { useNewUrlParser: true, useUnifiedTopology: true })
