@@ -51,7 +51,7 @@ app.post('/api/newuser', upload.single('photo'), async (req, res) => {
       photo = req.file.filename;
     }
 
-    const user = new User({ firstName, lastName, photo });
+    const user = new User({ firstName, lastName, photo: photo.replace(/^\//, '') });
     await user.save();
     res.status(201).json(user);
   } catch (error) {
