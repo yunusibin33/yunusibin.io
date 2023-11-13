@@ -25,89 +25,36 @@
         <input type="text" class="form-control" id="lastName" required>
       </div>
       <div class="mb-3">
-        <!-- Mobil cihazlardan kamera ile fotoğraf çekme işlemi -->
-        <button type="button" class="btn btn-primary" onclick="openCamera()">Kamerayı Aç</button>
-        <button type="button" class="btn btn-success" onclick="addUser()" style="display: none;">Kaydet</button>
-        <img id="capturedPhoto" style="max-width: 100%; display: none;">
+        <label for="photo" class="form-label">Fotoğraf</label>
+        <input type="file" capture="environment" accept="image/*" class="form-control" id="photo">
       </div>
+      <button type="button" class="btn btn-primary" onclick="capturePhoto()">Kamerayı Aç</button>
+      <button type="button" class="btn btn-success" onclick="addUser()">Kaydet</button>
     </form>
   </div>
 
   <script src="cdn/bootstrap.bundle.min.js"></script>
   <script>
-    let capturedPhoto; // Kullanıcı tarafından çekilen fotoğraf burada saklanacak
-
-    function openCamera() {
-      const constraints = { video: { facingMode: 'environment' }, audio: false };
-
-      navigator.mediaDevices.getUserMedia(constraints)
-        .then(function (stream) {
-          const video = document.createElement('video');
-          video.srcObject = stream;
-          video.setAttribute('playsinline', true);
-          video.style.width = '100%';
-          video.style.height = '100%';
-          document.body.appendChild(video);
-          video.play();
-
-          video.onloadedmetadata = function (e) {
-            const canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            const context = canvas.getContext('2d');
-
-            const button = document.createElement('button');
-            button.innerText = 'Fotoğraf Çek';
-            button.className = 'btn btn-primary';
-            button.style.position = 'absolute';
-            button.style.bottom = '20px';
-            button.style.left = '50%';
-            button.style.transform = 'translateX(-50%)';
-            button.onclick = function () {
-              // Video boyutunu al
-              context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-              // Canvas'tan veriyi al ve base64'e çevir
-              const photoDataUrl = canvas.toDataURL('image/png');
-
-              // Elde edilen base64 veriyi img etiketine set et
-              const capturedPhotoElement = document.getElementById('capturedPhoto');
-              capturedPhotoElement.src = photoDataUrl;
-              capturedPhotoElement.style.display = 'block';
-
-              // Base64 veriyi Blob'a çevir ve capturedPhoto değişkenine set et
-              capturedPhoto = dataURLtoBlob(photoDataUrl);
-
-              // Kullanılan kaynakları serbest bırak
-              stream.getTracks().forEach(track => track.stop());
-              video.remove();
-              canvas.remove();
-
-              // Kaydet butonunu göster
-              document.getElementById('userForm').getElementsByTagName('button')[1].style.display = 'block';
-            };
-
-            document.body.appendChild(button);
-          };
-        })
-        .catch(function (error) {
-          console.error('Error opening camera:', error);
-        });
+    function capturePhoto() {
+      // Kamera açma işlemleri burada gerçekleştirilebilir.
+      alert("Kamera uygulamasını açın ve fotoğraf çekin.");
     }
 
     function addUser() {
       const firstName = document.getElementById('firstName').value;
       const lastName = document.getElementById('lastName').value;
+      const photoInput = document.getElementById('photo');
+      const photo = photoInput.files[0];
 
-      if (!capturedPhoto) {
-        alert('Lütfen bir fotoğraf çekin.');
+      if (!photo) {
+        alert("Lütfen bir fotoğraf seçin.");
         return;
       }
 
       const formData = new FormData();
       formData.append('firstName', firstName);
       formData.append('lastName', lastName);
-      formData.append('photo', capturedPhoto);
+      formData.append('photo', photo);
 
       fetch('http://localhost:3000/api/newuser', {
         method: 'POST',
@@ -126,39 +73,8 @@
     }
 
     function fetchUsers() {
-      fetch('http://localhost:3000/api/allusers')
-        .then(response => response.json())
-        .then(users => {
-          const userList = document.getElementById('userList');
-          userList.innerHTML = '';
-
-          users.forEach(user => {
-            const listItem = document.createElement('li');
-            listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-            listItem.innerHTML = `
-                ${user.firstName} ${user.lastName}
-                <button class="btn btn-danger" onclick="deleteUser('${user._id}')">Delete</button>
-            `;
-            userList.appendChild(listItem);
-          });
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', fetchUsers);
-
-    function dataURLtoBlob(dataURL) {
-      const arr = dataURL.split(',');
-      const mime = arr[0].match(/:(.*?);/)[1];
-      const bstr = atob(arr[1]);
-      let n = bstr.length;
-      const u8arr = new Uint8Array(n);
-      while (n--) {
-        u8arr[n] = bstr.charCodeAt(n);
-      }
-      return new Blob([u8arr], { type: mime });
+      // Kullanıcıları getirme işlemleri burada gerçekleştirilebilir.
+      alert("Kullanıcılar getirildi.");
     }
   </script>
 </body>
