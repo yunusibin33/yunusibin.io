@@ -25,25 +25,42 @@
         <input type="text" class="form-control" id="lastName" required>
       </div>
       <div class="mb-3">
-        <label for="photo" class="form-label">Fotoğraf</label>
-        <input type="file" class="form-control" id="photo" accept="image/*">
+        <!-- Mobil cihazlardan kamera ile fotoğraf çekme işlemi -->
+        <label for="photo" class="form-label">Kamera</label>
       </div>
-      <button type="button" class="btn btn-primary" onclick="addUser()">Kaydet</button>
+      <button type="button" class="btn btn-primary" onclick="capturePhoto()">Kamerayı Aç ve Fotoğraf Çek</button>
+      <button type="button" class="btn btn-success" onclick="addUser()">Kaydet</button>
     </form>
   </div>
 
   <script src="cdn/bootstrap.bundle.min.js"></script>
   <script>
+    let capturedPhoto; // Kullanıcı tarafından çekilen fotoğraf burada saklanacak
+
+    function capturePhoto() {
+      const photoInput = document.getElementById('photo');
+      photoInput.click(); // Kamera açılışını tetikle
+      photoInput.addEventListener('change', handlePhotoCapture);
+    }
+
+    function handlePhotoCapture() {
+      const photoInput = document.getElementById('photo');
+      capturedPhoto = photoInput.files[0];
+    }
+
     function addUser() {
       const firstName = document.getElementById('firstName').value;
       const lastName = document.getElementById('lastName').value;
-      const photoInput = document.getElementById('photo');
-      const photo = photoInput.files[0];
+
+      if (!capturedPhoto) {
+        alert('Lütfen bir fotoğraf çekin.');
+        return;
+      }
 
       const formData = new FormData();
       formData.append('firstName', firstName);
       formData.append('lastName', lastName);
-      formData.append('photo', photo);
+      formData.append('photo', capturedPhoto);
 
       fetch('http://localhost:3000/api/newuser', {
         method: 'POST',
