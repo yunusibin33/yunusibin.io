@@ -26,9 +26,9 @@
       </div>
       <div class="mb-3">
         <!-- Mobil cihazlardan kamera ile fotoğraf çekme işlemi -->
-        <label for="photo" class="form-label">Kamera</label>
+        <button type="button" class="btn btn-primary" onclick="capturePhoto()">Fotoğraf Çek</button>
+        <img id="capturedPhoto" style="max-width: 100px; max-height: 100px; display: none;">
       </div>
-      <button type="button" class="btn btn-primary" onclick="capturePhoto()">Kamerayı Aç ve Fotoğraf Çek</button>
       <button type="button" class="btn btn-success" onclick="addUser()">Kaydet</button>
     </form>
   </div>
@@ -36,17 +36,6 @@
   <script src="cdn/bootstrap.bundle.min.js"></script>
   <script>
     let capturedPhoto; // Kullanıcı tarafından çekilen fotoğraf burada saklanacak
-
-    function capturePhoto() {
-      const photoInput = document.getElementById('photo');
-      photoInput.click(); // Kamera açılışını tetikle
-      photoInput.addEventListener('change', handlePhotoCapture);
-    }
-
-    function handlePhotoCapture() {
-      const photoInput = document.getElementById('photo');
-      capturedPhoto = photoInput.files[0];
-    }
 
     function addUser() {
       const firstName = document.getElementById('firstName').value;
@@ -101,6 +90,61 @@
     }
 
     document.addEventListener('DOMContentLoaded', fetchUsers);
+
+    function capturePhoto() {
+      // Mobil cihazlardan kamera ile fotoğraf çekme işlemi
+      const constraints = { video: { facingMode: 'environment' }, audio: false };
+
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then(function (stream) {
+          const video = document.createElement('video');
+          video.srcObject = stream;
+          video.setAttribute('playsinline', true);
+          video.play();
+
+          video.onloadedmetadata = function (e) {
+            // Video boyutunu al
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext('2d');
+
+            // Videoyu canvas'a çiz
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Canvas'tan veriyi al ve base64'e çevir
+            const photoDataUrl = canvas.toDataURL('image/png');
+
+            // Elde edilen base64 veriyi img etiketine set et
+            const capturedPhotoElement = document.getElementById('capturedPhoto');
+            capturedPhotoElement.src = photoDataUrl;
+            capturedPhotoElement.style.display = 'block';
+
+            // Base64 veriyi Blob'a çevir ve capturedPhoto değişkenine set et
+            capturedPhoto = dataURLtoBlob(photoDataUrl);
+
+            // Kullanılan kaynakları serbest bırak
+            stream.getTracks().forEach(track => track.stop());
+            video.remove();
+            canvas.remove();
+          };
+        })
+        .catch(function (error) {
+          console.error('Error capturing photo:', error);
+        });
+    }
+
+    function dataURLtoBlob(dataURL) {
+      const arr = dataURL.split(',');
+      const mime = arr[0].match(/:(.*?);/)[1];
+      const bstr = atob(arr[1]);
+      let n = bstr.length;
+      const u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new Blob([u8arr], { type: mime });
+    }
   </script>
 </body>
 
