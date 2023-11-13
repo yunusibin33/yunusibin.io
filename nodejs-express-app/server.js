@@ -39,7 +39,21 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({ 
+  storage: storage,
+  limits: {
+    fileSize: 1000000, // 1000 KB (1000 * 1024 bytes)
+  },
+  fileFilter: fileFilter,
+});
 
 // Kullanıcı ekleme endpoint'i
 app.post('/api/newuser', upload.single('photo'), async (req, res) => {
