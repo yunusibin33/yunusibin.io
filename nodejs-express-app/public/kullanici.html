@@ -22,23 +22,31 @@
       <label for="lastName" class="form-label">Soyad</label>
       <input type="text" class="form-control" id="lastName" required>
     </div>
+    <div class="mb-3">
+      <label for="photo" class="form-label">Fotoğraf</label>
+      <input type="file" class="form-control" id="photo" accept="image/*">
+    </div>
     <button type="button" class="btn btn-primary" onclick="addUser()">Kaydet</button>
   </form>
 </div>
 
 <script src="/nodejs-express-app/public/cdn/bootstrap.bundle.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofNl+4+0tKVoFjK8Ad9DSd8Yq4MOwMV6C" crossorigin="anonymous"></script>
 <script>
-  function addUser() {
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
+function addUser() {
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const photoInput = document.getElementById('photo');
+  const photo = photoInput.files[0];
 
-    fetch('http://localhost:3000/api/newuser', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ firstName, lastName }),
-    })
+  const formData = new FormData();
+  formData.append('firstName', firstName);
+  formData.append('lastName', lastName);
+  formData.append('photo', photo);
+
+  fetch('http://localhost:3000/api/newuser', {
+    method: 'POST',
+    body: formData,
+  })
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
@@ -48,7 +56,7 @@
       console.error('Error:', error);
       alert('Kullanıcı eklenirken bir hata oluştu!');
     });
-  }
+}
 </script>
 </body>
 </html>

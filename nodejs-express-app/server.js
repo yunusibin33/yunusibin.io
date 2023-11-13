@@ -1,15 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const cors = require('cors'); // CORS eklendi
+const cors = require('cors');
+const multer = require('multer'); // multer eklendi
 
 const app = express();
 const port = 3000;
 
-// CORS middleware'i eklendi
 app.use(cors());
+app.use(express.json());
 
-// MongoDB bağlantısı
 mongoose.connect('mongodb://localhost:27017/kullanicilar', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB ile bağlantı sağlandı');
@@ -18,29 +18,47 @@ mongoose.connect('mongodb://localhost:27017/kullanicilar', { useNewUrlParser: tr
     console.error('MongoDB bağlantı hatası:', err);
   });
 
-// Kullanıcı modeli
-const User = mongoose.model('User', {
-  firstName: String,
-  lastName: String,
+  const User = mongoose.model('User', {
+    firstName: String,
+    lastName: String,
+    photo: {
+      type: String,
+      default: null,
+    },
+  });
+// multer ayarları
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'public/uploads'));
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+  }
 });
 
-// JSON verileri okumak için middleware
-app.use(express.json());
+const upload = multer({ storage: storage });
 
-// Kullanıcı ekleme endpoint'i
-app.post('/api/newuser', async (req, res) => {
+app.post('/api/newuser', upload.single('photo'), async (req, res) => {
   const { firstName, lastName } = req.body;
 
   try {
-    const user = new User({ firstName, lastName });
+    let photo = null;
+
+    if (req.file) {
+      photo = req.file.filename;
+    }
+
+    const user = new User({ firstName, lastName, photo });
     await user.save();
     res.status(201).json(user);
   } catch (error) {
+    console.error('Error:', error);
     res.status(500).json({ error: 'Kullanıcı eklenirken bir hata oluştu.' });
   }
 });
 
-// Tüm kullanıcıları listeleme endpoint'i
+
 app.get('/api/allusers', async (req, res) => {
   try {
     const users = await User.find();
@@ -54,21 +72,16 @@ app.delete('/api/deleteuser/:id', async (req, res) => {
   const userId = req.params.id;
 
   try {
-      // Silme işlemi burada gerçekleştirilir
-      await User.findByIdAndDelete(userId);
-
-      res.json({ success: true });
+    await User.findByIdAndDelete(userId);
+    res.json({ success: true });
   } catch (error) {
-      console.error('Error:', error);
-      res.status(500).json({ error: 'Kullanıcı silinirken bir hata oluştu.' });
-  }z
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Kullanıcı silinirken bir hata oluştu.' });
+  }
 });
 
-
-// Public dizinindeki dosyaları servis etmek için
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Server'ı dinle
 app.listen(port, () => {
   console.log(`Server http://localhost:${port} üzerinde çalışıyor`);
 });
