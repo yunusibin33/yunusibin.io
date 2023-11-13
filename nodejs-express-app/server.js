@@ -61,7 +61,7 @@ app.delete('/api/deleteuser/:id', async (req, res) => {
   } catch (error) {
       console.error('Error:', error);
       res.status(500).json({ error: 'Kullanıcı silinirken bir hata oluştu.' });
-  }
+  }z
 });
 
 

@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,88 +9,46 @@
   <link rel="stylesheet" href="style.css"> <!-- Eklenen satır -->
   <title>Kullanıcı Ekle</title>
 </head>
-
 <body>
 
-  <div class="container mt-5">
-    <h2 class="text-center">Kullanıcı Ekle</h2>
-    <form id="userForm">
-      <div class="mb-3">
-        <label for="firstName" class="form-label">Ad</label>
-        <input type="text" class="form-control" id="firstName" required>
-      </div>
-      <div class="mb-3">
-        <label for="lastName" class="form-label">Soyad</label>
-        <input type="text" class="form-control" id="lastName" required>
-      </div>
-      <div class="mb-3">
-        <button type="button" class="btn btn-primary" onclick="openCamera()">Kamerayı Aç ve Fotoğraf Çek</button>
-      </div>
+<div class="container mt-5">
+  <h2 class="text-center">Kullanıcı Ekle</h2>
+  <form id="userForm">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Ad</label>
+      <input type="text" class="form-control" id="firstName" required>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Soyad</label>
+      <input type="text" class="form-control" id="lastName" required>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="addUser()">Kaydet</button>
+  </form>
+</div>
 
-      <button type="button" class="btn btn-primary" onclick="addUser()">Kaydet</button>
-    </form>
-  </div>
+<script src="/nodejs-express-app/public/cdn/bootstrap.bundle.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofNl+4+0tKVoFjK8Ad9DSd8Yq4MOwMV6C" crossorigin="anonymous"></script>
+<script>
+  function addUser() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
 
-  <script src="/nodejs-express-app/public/cdn/bootstrap.bundle.min.js"
-    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofNl+4+0tKVoFjK8Ad9DSd8Yq4MOwMV6C" crossorigin="anonymous"></script>
-  <script>
-    function openCamera() {
-      const constraints = {
-        video: true
-      };
-
-      navigator.mediaDevices.getUserMedia(constraints)
-        .then(function (stream) {
-          const video = document.createElement('video');
-          video.srcObject = stream;
-          video.play();
-          document.getElementById('userForm').appendChild(video);
-        })
-        .catch(function (error) {
-          console.error('Error:', error);
-        });
-    }
-
-    function addUser() {
-      const firstName = document.getElementById('firstName').value;
-      const lastName = document.getElementById('lastName').value;
-
-      // Burada fotoğrafı çektiğin video elemanını yakala
-      const video = document.querySelector('video');
-      const canvas = document.createElement('canvas');
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const context = canvas.getContext('2d');
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      // Fotoğrafı Base64 formatına dönüştür
-      const photo = canvas.toDataURL('image/png');
-
-      // Kamerayı ve video elemanını kaldır
-      const tracks = video.srcObject.getTracks();
-      tracks.forEach(track => track.stop());
-      video.remove();
-
-      const formData = new FormData();
-      formData.append('firstName', firstName);
-      formData.append('lastName', lastName);
-      formData.append('photo', photo);
-
-      fetch('http://localhost:3000/api/newuser', {
-          method: 'POST',
-          body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-          alert('Kullanıcı başarıyla eklendi!');
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          alert('Kullanıcı eklenirken bir hata oluştu!');
-        });
-    }
-  </script>
+    fetch('http://localhost:3000/api/newuser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ firstName, lastName }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      alert('Kullanıcı başarıyla eklendi!');
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('Kullanıcı eklenirken bir hata oluştu!');
+    });
+  }
+</script>
 </body>
-
 </html>
