@@ -10,16 +10,11 @@
   <link rel="stylesheet" href="cdn/bootstrap.min.css">
   <title>Kullanıcı Ekle</title>
 </head>
-<style>
 
-  .kllnc {
-    background-color:aqua;
-  }
-</style>
 <body>
 
   <div class="container mt-5">
-    <h2 class="text-center kllnc">Kullanıcı Ekle</h2>
+    <h2 class="text-center">Kullanıcı Ekle</h2>
     <form id="userForm">
       <div class="mb-3">
         <label for="firstName" class="form-label">Ad</label>
@@ -31,19 +26,30 @@
       </div>
       <div class="mb-3">
         <label for="photo" class="form-label">Fotoğraf</label>
-        <input type="file" capture="camera" accept="image/*" class="form-control" id="photo">
+        <input type="file" capture="environment" accept="image/*" class="form-control" id="photo">
       </div>
-      <button type="button" class="btn btn-primary" onclick="addUser()">Kaydet</button>
+      <button type="button" class="btn btn-primary" onclick="capturePhoto()">Kamerayı Aç</button>
+      <button type="button" class="btn btn-success" onclick="addUser()">Kaydet</button>
     </form>
   </div>
 
   <script src="cdn/bootstrap.bundle.min.js"></script>
   <script>
+    function capturePhoto() {
+      // Kamera açma işlemleri burada gerçekleştirilebilir.
+      alert("Kamera uygulamasını açın ve fotoğraf çekin.");
+    }
+
     function addUser() {
       const firstName = document.getElementById('firstName').value;
       const lastName = document.getElementById('lastName').value;
       const photoInput = document.getElementById('photo');
       const photo = photoInput.files[0];
+
+      if (!photo) {
+        alert("Lütfen bir fotoğraf seçin.");
+        return;
+      }
 
       const formData = new FormData();
       formData.append('firstName', firstName);
@@ -67,28 +73,9 @@
     }
 
     function fetchUsers() {
-      fetch('http://localhost:3000/api/allusers')
-        .then(response => response.json())
-        .then(users => {
-          const userList = document.getElementById('userList');
-          userList.innerHTML = '';
-
-          users.forEach(user => {
-            const listItem = document.createElement('li');
-            listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-            listItem.innerHTML = `
-                ${user.firstName} ${user.lastName}
-                <button class="btn btn-danger" onclick="deleteUser('${user._id}')">Delete</button>
-            `;
-            userList.appendChild(listItem);
-          });
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+      // Kullanıcıları getirme işlemleri burada gerçekleştirilebilir.
+      alert("Kullanıcılar getirildi.");
     }
-
-    document.addEventListener('DOMContentLoaded', fetchUsers);
   </script>
 </body>
 
