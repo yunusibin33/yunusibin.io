@@ -66,6 +66,12 @@
 <body>
   <div class="container">
     <h2>Users</h2>
+    <!-- Eklenen arama alanı -->
+<div class="mb-3">
+  <label for="search" class="form-label">Kullanıcı Ara</label>
+  <input type="text" class="form-control" id="search" oninput="searchUsers()" placeholder="Ad veya Soyad ile ara">
+</div>
+
     <table class="table">
       <thead>
         <tr>
@@ -148,6 +154,25 @@
     }
 
     document.addEventListener('DOMContentLoaded', fetchUsers);
+      // Kullanıcıları filtreleme fonksiyonu
+  function searchUsers() {
+    const searchInput = document.getElementById('search');
+    const searchTerm = searchInput.value.toLowerCase();
+    const userList = document.getElementById('userList');
+    const rows = userList.getElementsByTagName('tr');
+
+    for (let i = 0; i < rows.length; i++) {
+      const nameColumn = rows[i].getElementsByTagName('td')[1];
+      const lastNameColumn = rows[i].getElementsByTagName('td')[2];
+      const name = nameColumn.textContent || nameColumn.innerText;
+      const lastName = lastNameColumn.textContent || lastNameColumn.innerText;
+
+      const match = name.toLowerCase().includes(searchTerm) || lastName.toLowerCase().includes(searchTerm);
+      rows[i].style.display = match ? '' : 'none';
+    }
+  }
+
+  // ... Diğer kodlar
   </script>
 </body>
 
