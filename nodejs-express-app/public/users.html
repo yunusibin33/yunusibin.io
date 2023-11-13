@@ -1,67 +1,90 @@
+<!-- public/users.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-        crossorigin="anonymous">
-    <title>Users</title>
-    <style>
-        body {
-            padding: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+    crossorigin="anonymous">
+  <title>Users</title>
+  <style>
+    body {
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <h2>Users</h2>
-        <ul id="userList" class="list-group mb-3"></ul>
-    </div>
+  <div class="container">
+    <h2>Users</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ad</th>
+          <th scope="col">Soyad</th>
+          <th scope="col">Fotoğraf</th>
+          <th scope="col">İşlemler</th>
+        </tr>
+      </thead>
+      <tbody id="userList">
+        <!-- Kullanıcılar buraya eklenecek -->
+      </tbody>
+    </table>
+  </div>
 
-    <script>
-        function fetchUsers() {
-            fetch('http://localhost:3000/api/allusers')
-                .then(response => response.json())
-                .then(users => {
-                    const userList = document.getElementById('userList');
-                    userList.innerHTML = '';
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofNl+4+0tKVoFjK8Ad9DSd8Yq4MOwMV6C"
+    crossorigin="anonymous"></script>
+  <script>
+    function fetchUsers() {
+      fetch('http://localhost:3000/api/allusers')
+        .then(response => response.json())
+        .then(users => {
+          const userList = document.getElementById('userList');
+          userList.innerHTML = '';
 
-                    users.forEach(user => {
-                        const listItem = document.createElement('li');
-                        listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-                        listItem.innerHTML = `
-                            ${user.firstName} ${user.lastName}
-                            <button class="btn btn-danger" onclick="deleteUser('${user._id}')">Delete</button>
-                        `;
-                        userList.appendChild(listItem);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
+          users.forEach((user, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <th scope="row">${index + 1}</th>
+              <td>${user.firstName}</td>
+              <td>${user.lastName}</td>
+              <td>
+                <img src="/uploads/${user.photo}" alt="Fotoğraf" style="max-width: 100px; max-height: 100px;">
+              </td>
+              <td>
+                <button class="btn btn-danger" onclick="deleteUser('${user._id}')">Delete</button>
+              </td>
+            `;
+            userList.appendChild(row);
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
 
-        function deleteUser(userId) {
-            fetch(`http://localhost:3000/api/deleteuser/${userId}`, {
-                method: 'DELETE',
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    fetchUsers(); // Yeniden kullanıcıları getir
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
+    function deleteUser(userId) {
+      fetch(`http://localhost:3000/api/deleteuser/${userId}`, {
+        method: 'DELETE',
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+          fetchUsers(); // Yeniden kullanıcıları getir
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
 
-        // Sayfa yüklendiğinde kullanıcıları getir
-        document.addEventListener('DOMContentLoaded', fetchUsers);
-    </script>
+    document.addEventListener('DOMContentLoaded', fetchUsers);
+  </script>
 </body>
 
 </html>

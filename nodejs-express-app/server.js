@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
-const multer = require('multer'); // multer eklendi
+const multer = require('multer');
 
 const app = express();
 const port = 3000;
@@ -18,15 +18,6 @@ mongoose.connect('mongodb://localhost:27017/kullanicilar', { useNewUrlParser: tr
     console.error('MongoDB bağlantı hatası:', err);
   });
 
-  const User = mongoose.model('User', {
-    firstName: String,
-    lastName: String,
-    photo: {
-      type: String,
-      default: null,
-    },
-  });
-// multer ayarları
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, 'public/uploads'));
@@ -38,6 +29,17 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+const userSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  photo: {
+    type: String,
+    default: null,
+  },
+});
+
+const User = mongoose.model('User', userSchema);
 
 app.post('/api/newuser', upload.single('photo'), async (req, res) => {
   const { firstName, lastName } = req.body;
@@ -57,7 +59,6 @@ app.post('/api/newuser', upload.single('photo'), async (req, res) => {
     res.status(500).json({ error: 'Kullanıcı eklenirken bir hata oluştu.' });
   }
 });
-
 
 app.get('/api/allusers', async (req, res) => {
   try {
