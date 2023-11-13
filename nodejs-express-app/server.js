@@ -55,10 +55,11 @@ app.post('/api/newuser', upload.single('photo'), async (req, res) => {
     await user.save();
     res.status(201).json(user);
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Server Error:', error); // Hata konsola yazdırılır
     res.status(500).json({ error: 'Kullanıcı eklenirken bir hata oluştu.' });
   }
 });
+
 
 app.get('/api/allusers', async (req, res) => {
   try {
