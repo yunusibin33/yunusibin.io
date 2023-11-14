@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
 const upload = multer({ 
   storage: storage,
   limits: {
-    fileSize: 1000000, // 1000 KB
+    fileSize: 8000000, // 1000 KB
   },
   fileFilter: function (req, file, cb) {
     if (file.mimetype !== 'image/jpeg') {
@@ -93,7 +93,6 @@ app.delete('/api/deleteuser/:id', async (req, res) => {
 // Public dizinindeki dosyaları servis etmek için
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Server'ı dinle
 app.listen(port, () => {
-  console.log(`Server http://localhost:${port} üzerinde çalışıyor`);
+  console.log(`Server running at http://localhost:${port}/`);
 });
