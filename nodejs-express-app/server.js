@@ -20,11 +20,13 @@ mongoose.connect('mongodb://localhost:27017/kullanicilar', { useNewUrlParser: tr
   });
 
 // Kullanıcı modeli
-const User = mongoose.model('User', {
+const userSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   photo: String,
 });
+
+const User = mongoose.model('User', userSchema);
 
 // JSON verileri okumak için middleware
 app.use(express.json());
@@ -35,24 +37,21 @@ const storage = multer.diskStorage({
     cb(null, 'public/uploads/');
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
+    cb(null, Date.now() + '.jpg');
   }
 });
-
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg') {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
 
 const upload = multer({ 
   storage: storage,
   limits: {
-    fileSize: 1000000, // 1000 KB (1000 * 1024 bytes)
+    fileSize: 1000000, // 1000 KB
   },
-  fileFilter: fileFilter,
+  fileFilter: function (req, file, cb) {
+    if (file.mimetype !== 'image/jpeg') {
+      return cb(new Error('Sadece JPG dosyaları desteklenmektedir.'));
+    }
+    cb(null, true);
+  },
 });
 
 // Kullanıcı ekleme endpoint'i
