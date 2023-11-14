@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="cdn/bootstrap.min.css">
-  <title>Kullanıcılar</title>
+  <title>Users</title>
   <style>
     body {
       padding: 20px;
@@ -65,11 +65,21 @@
 
 <body>
   <div class="container">
-    <h2>Kullanıcılar</h2>
-    <ul id="userList" class="list-group">
-      <!-- Kullanıcılar buraya eklenecek -->
-    </ul>
-
+    <h2>Users</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ad</th>
+          <th scope="col">Soyad</th>
+          <th scope="col">Fotoğraf</th>
+          <th scope="col">İşlemler</th>
+        </tr>
+      </thead>
+      <tbody id="userList">
+        <!-- Kullanıcılar buraya eklenecek -->
+      </tbody>
+    </table>
   </div>
 
   <!-- Bootstrap Modal -->
@@ -88,16 +98,35 @@
           userList.innerHTML = '';
 
           users.forEach((user, index) => {
-            const row = document.createElement('li');
-            row.className = 'list-group-item';
+            const row = document.createElement('tr');
             row.innerHTML = `
-              <div class="d-flex justify-content-between align-items-center">
-                <span>${index + 1}. ${user.firstName} ${user.lastName}</span>
-                <button class="btn btn-primary" onclick="showImage('uploads/${user.photo}')">Fotoğrafı Görüntüle</button>
-              </div>
+              <th scope="row">${index + 1}</th>
+              <td>${user.firstName}</td>
+              <td>${user.lastName}</td>
+              <td>
+                <!-- Resmin üzerine tıklandığında showImage fonksiyonunu çağır -->
+                <img src="uploads/${user.photo}" alt="Fotoğraf" style="max-width: 100px; max-height: 100px;" class="clickable" onclick="showImage('uploads/${user.photo}')">
+              </td>
+              <td>
+                <button class="btn btn-danger" onclick="deleteUser('${user._id}')">Delete</button>
+              </td>
             `;
             userList.appendChild(row);
           });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    function deleteUser(userId) {
+      fetch(`http://localhost:3000/api/deleteuser/${userId}`, {
+        method: 'DELETE',
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+          fetchUsers(); // Yeniden kullanıcıları getir
         })
         .catch(error => {
           console.error('Error:', error);

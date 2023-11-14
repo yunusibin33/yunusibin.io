@@ -1,3 +1,5 @@
+<!-- public/kullanici.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,15 +26,10 @@
       </div>
       <div class="mb-3">
         <label for="photo" class="form-label">Fotoğraf</label>
-        <input type="file" class="form-control" id="photo" accept="image/jpeg">
+        <input type="file" class="form-control" id="photo" accept="image/*">
       </div>
       <button type="button" class="btn btn-primary" onclick="addUser()">Kaydet</button>
     </form>
-
-    <h2>Kullanıcılar</h2>
-    <ul id="userList" class="list-group">
-      <!-- Kullanıcılar buraya eklenecek -->
-    </ul>
   </div>
 
   <script src="cdn/bootstrap.bundle.min.js"></script>

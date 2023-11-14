@@ -20,13 +20,11 @@ mongoose.connect('mongodb://localhost:27017/kullanicilar', { useNewUrlParser: tr
   });
 
 // Kullanıcı modeli
-const userSchema = new mongoose.Schema({
+const User = mongoose.model('User', {
   firstName: String,
   lastName: String,
   photo: String,
 });
-
-const User = mongoose.model('User', userSchema);
 
 // JSON verileri okumak için middleware
 app.use(express.json());
@@ -37,21 +35,24 @@ const storage = multer.diskStorage({
     cb(null, 'public/uploads/');
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '.jpg');
+    cb(null, Date.now() + '-' + file.originalname);
   }
 });
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 
 const upload = multer({ 
   storage: storage,
   limits: {
-    fileSize: 8000000, // 1000 KB
+    fileSize: 1000000, // 1000 KB (1000 * 1024 bytes)
   },
-  fileFilter: function (req, file, cb) {
-    if (file.mimetype !== 'image/jpeg') {
-      return cb(new Error('Sadece JPG dosyaları desteklenmektedir.'));
-    }
-    cb(null, true);
-  },
+  fileFilter: fileFilter,
 });
 
 // Kullanıcı ekleme endpoint'i
@@ -93,6 +94,7 @@ app.delete('/api/deleteuser/:id', async (req, res) => {
 // Public dizinindeki dosyaları servis etmek için
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Server'ı dinle
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
+  console.log(`Server http://localhost:${port} üzerinde çalışıyor`);
 });
