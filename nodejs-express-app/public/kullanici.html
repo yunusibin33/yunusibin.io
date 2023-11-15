@@ -1,54 +1,336 @@
-<!-- public/kullanici.html -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/nodejs-express-app/public/cdn/bootstrap.min.css" rel="stylesheet" integrity="sha384-wVUrs7IkpGJpKxx7ln1A1JKnFFAvPDZx2pMWItGQDTEI/tfOk2UtmUc9bPbREHJp" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css"> <!-- Eklenen satır -->
-  <title>Kullanıcı Ekle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknik Servis Takip Formu</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ddebf3;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        background: rgb(73, 235, 227);
+        background: linear-gradient(-30deg, rgb(184, 243, 240) 36%, rgb(117, 153, 231) 63%);
+        max-width: 500px;
+        margin: 15px 40px;
+        padding: 10px 20px;
+        box-shadow: 0 0 6px 2px rgba(43, 62, 63, 0.3);
+        border-radius: 14px;
+    }
+
+    form {
+        text-align: left;
+    }
+
+    label {
+        font-weight: bolder;
+        color: #ffffff;
+    }
+
+    input:hover {
+        border: 1px solid rgb(16, 245, 215) !important;
+    }
+
+    input:active {
+        border: 1px solid greenyellow !important;
+    }
+
+    #complaint:hover {
+        border: 1px solid rgb(16, 245, 215) !important;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #1642a1;
+        border-radius: 4px;
+
+    }
+
+    button {
+        background-color: #1f53a0;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-left: 210px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #nome {
+        width: 90%;
+        text-transform: uppercase !important;
+    }
+
+    #phane {
+        width: 90%;
+        text-transform: uppercase !important;
+    }
+
+    #complant {
+        width: 90%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+        text-transform: uppercase !important;
+    }
+
+    #compan {
+        width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+        text-transform: uppercase !important;
+    }
+
+    #dute {
+        width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+    }
+
+    #keri {
+        width: 90%;
+        text-transform: uppercase !important;
+    }
+
+    #lube {
+        width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+    }
+
+    #name {
+        width: 90%;
+        text-transform: uppercase !important;
+    }
+
+    #phone {
+        width: 90%;
+        text-transform: uppercase !important;
+    }
+
+    #seri {
+        width: 90%;
+        text-transform: uppercase !important;
+    }
+
+    #complaint {
+        width: 90%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+    }
+
+    #company {
+        width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+    }
+
+    #company:hover {
+        border: 1px solid rgb(16, 245, 215) !important;
+    }
+
+    #date {
+        width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+    }
+
+    #date:hover {
+        border: 1px solid rgb(16, 245, 215) !important;
+    }
+
+    #sube {
+        width: 94%;
+        height: 37px;
+        border: 1px solid #1642a1 !important;
+        border-radius: 4px;
+    }
+
+    #sube:hover {
+        border: 1px solid rgb(16, 245, 215) !important;
+    }
+
+    #serviceForm {
+        width: 525px;
+    }
+
+    .titleteknik {
+        color: rgb(255, 255, 255);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .display {
+        display: flex;
+        justify-content: center;
+    }
+
+    .firmaitle {
+        color: rgb(53, 85, 100);
+        font-family: 'Times New Roman', Times, serif;
+    }
+</style>
+
 <body>
+    <div class="display">
+        <div class="container">
+            <h3 style="text-align: center;" class="titleteknik">Teknik Servis Takip Formu</h1>
+                <h3 style="text-align: center;" class="firmaitle">Firmaya Gidecek Olan</h3>
+                <form id="serviceForm">
+                    <label for="name">Ad Soyad:</label> <br><br>
+                    <input type="text" placeholder="S.G (0001)" id="name" required><br>
 
-<div class="container mt-5">
-  <h2 class="text-center">Kullanıcı Ekle</h2>
-  <form id="userForm">
-    <div class="mb-3">
-      <label for="firstName" class="form-label">Ad</label>
-      <input type="text" class="form-control" id="firstName" required>
+                    <label for="phone">Tel :</label> <br> <br>
+                    <input type="tel" id="phone" placeholder="00000000" required pattern="[0-9]{10}"><br>
+
+
+                    <label for="seri">Seri No :</label> <br> <br>
+                    <input type="tel" id="seri" placeholder="SN:196841" required pattern="[0-9]{10}"><br>
+
+                    <label for="complaint">Şikayet Yazınız:</label> <br> <br>
+                    <textarea id="complaint" name="complaint" rows="4" cols="50" oninput="insertLineBreak(this)"></textarea>
+                    <br>
+                    <br>
+                    <label for="company">Hangi Firmaya Gidecek:</label> <br><br>
+                    <select id="company" name="company">
+                        <option value="A&M">A&M</option>
+                        <option value="Helix">Helix</option>
+                        <option value="Coselgi">Coselgi</option>
+                        <option value="boş">TALHA</option>
+                    </select> <br> <br>
+
+                    <label for="date">Tarih Seçin:</label> <br><br>
+                    <input type="date" id="date" name="date"> <br> <br>
+
+                    <label for="sube">Şube Seçin:</label> <br> <br>
+                    <select id="sube" name="sube" onchange="adjustOptions()">
+                        <option value="MERKEZ">MERKEZ</option>
+                        <option value="ŞUBE 2">ŞUBE 2</option>
+                        <option value="ŞUBE 3">ŞUBE 3</option>
+                        <option value="ŞUBE 4">ŞUBE 4</option>
+                    </select><br>
+                    <button type="button" onclick="printServiceDetails()">Yazdır</button>
+                </form>
+        </div>
+        <div class="container">
+            <h3 style="text-align: center;" class="titleteknik">Teknik Servis Takip Formu</h1>
+                <h3 style="text-align: center;" class="firmaitle">Bizde Kalacak Olan</h3>
+                <form id="serviceForm">
+                    <label for="nome">Ad Soyad:</label> <br><br>
+                    <input type="text" placeholder="Semra Genç (0001)" id="nome" required><br>
+
+                    <label for="phane">Tel :</label> <br> <br>
+                    <input type="tel" id="phane" placeholder="05326457652" required pattern="[0-9]{10}"><br>
+
+
+                    <label for="keri">Seri No :</label> <br> <br>
+                    <input type="tel" id="keri" placeholder="SN:23774257" required pattern="[0-9]{10}"><br>
+
+                    <label for="complant">Şikayet Yazınız:</label> <br> <br>
+                    <textarea id="complant" name="complant" rows="4" cols="50" oninput="insertLineBreak(this)"></textarea>
+                    <br>
+                    <br>
+                    <label for="compan">Hangi Firmaya Gidecek:</label> <br><br>
+                    <select id="compan" name="compan">
+                        <option value="A&M">A&M</option>
+                        <option value="Helix">Helix</option>
+                        <option value="Coselgi">Coselgi</option>
+                        <option value="boş">TALHA</option>
+                    </select> <br> <br>
+
+                    <label for="dute">Tarih Seçin:</label> <br><br>
+                    <input type="date" id="dute" name="dute"> <br> <br>
+
+                    <label for="lube">Şube Seçin:</label> <br> <br>
+                    <select id="lube" name="lube" onchange="adjustOptions()">
+                        <option value="MERKEZ">MERKEZ</option>
+                        <option value="ŞUBE 2">ŞUBE 2</option>
+                        <option value="ŞUBE 3">ŞUBE 3</option>
+                        <option value="ŞUBE 4">ŞUBE 4</option>
+                    </select><br>
+                    <button type="button" onclick="printServiceDetailt()">Yazdır</button>
+                </form>
+        </div>
     </div>
-    <div class="mb-3">
-      <label for="lastName" class="form-label">Soyad</label>
-      <input type="text" class="form-control" id="lastName" required>
-    </div>
-    <button type="button" class="btn btn-primary" onclick="addUser()">Kaydet</button>
-  </form>
-</div>
+    <script>
+        function insertLineBreak(textarea) {
+            var maxLength = 20; // İstenen karakter sınırı
+        
+            if (textarea.value.length >= maxLength) {
+                var currentPosition = textarea.selectionStart;
+                var currentText = textarea.value;
+        
+                if (currentPosition == maxLength) {
+                    var newText = currentText.slice(0, currentPosition) + '\n' + currentText.slice(currentPosition);
+                    textarea.value = newText;
+                    textarea.selectionStart = currentPosition + 1; // İmleci doğru konuma ayarla
+                    textarea.selectionEnd = currentPosition + 1;
+                }
+            }
+        }
+        </script>
+    <script>
+        function printServiceDetails() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const complaint = document.getElementById('complaint').value;
+            const company = document.getElementById('company').value;
+            const date = document.getElementById('date').value;
+            const seri = document.getElementById('seri').value;
+            const sube = document.getElementById('sube').value;
+            const output = `Ad Soyad: ${name}\nTel: ${phone}\nSeri NO: ${seri}\nFirma: ${company}\nTarih: ${date}\nŞikayet: ${complaint}\nŞube: ${sube}`;
 
-<script src="/nodejs-express-app/public/cdn/bootstrap.bundle.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofNl+4+0tKVoFjK8Ad9DSd8Yq4MOwMV6C" crossorigin="anonymous"></script>
-<script>
-  function addUser() {
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
+            const printWindow = window.open('', '', 'width=1000,height=700');
+            printWindow.document.open();
+            printWindow.document.write(`<pre>${output}</pre>`);
+            printWindow.document.close();
+            printWindow.print();
+            printWindow.close();
+        }
 
-    fetch('http://localhost:3000/api/newuser', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ firstName, lastName }),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-      alert('Kullanıcı başarıyla eklendi!');
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert('Kullanıcı eklenirken bir hata oluştu!');
-    });
-  }
-</script>
+        function printServiceDetailt() {
+            const nome = document.getElementById('nome').value;
+            const phane = document.getElementById('phane').value;
+            const complant = document.getElementById('complant').value;
+            const compan = document.getElementById('compan').value;
+            const dute = document.getElementById('dute').value;
+            const keri = document.getElementById('keri').value;
+            const lube = document.getElementById('lube').value;
+            const output = `Ad Soyad: ${nome}\nTel: ${phane}\nSeri NO: ${keri}\nFirma: ${compan}\nTarih: ${dute}\nŞikayet: ${complant}\nŞube: ${lube}`;
+
+            const printWindow = window.open('', '', 'width=1000,height=700');
+            printWindow.document.open();
+            printWindow.document.write(`<pre>${output}</pre>`);
+            printWindow.document.close();
+            printWindow.print();
+            printWindow.close();
+        }
+
+    </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
