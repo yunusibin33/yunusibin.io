@@ -37,7 +37,7 @@ async function compressImage(file) {
                        resolve(blob);
                    },
                    file.type,
-                   0.8 // Resim kalitesi (0 ile 1 arasında, 1 en yüksek kalite)
+                   1 // Resim kalitesi (0 ile 1 arasında, 1 en yüksek kalite)
                );
            };
 
