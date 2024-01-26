@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resim Boyut Küçültme</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="dropArea">
+        <p>Dosyaları sürükleyip bırakın veya buraya tıklayın.</p>
+        <input type="file" id="fileInput" multiple>
+        <button onclick="compressAndDownload()">Dosyaları Boyutlandır ve İndir</button>
+        <div id="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+        <div id="progressText">0%</div>
+    </div>
+    <script src="scritp.js"></script>
+</body>
+</html>
