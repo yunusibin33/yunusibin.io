@@ -1,208 +1,480 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Yunus İbin | Frontend Developer</title>
+  <meta name="description"
+    content="Frontend geliştirici Yunus İbin'in kişisel portföy sitesine hoş geldiniz. HTML, CSS, JavaScript, React ve daha fazlası.">
+  <meta name="keywords" content="Yunus İbin, Frontend Developer, Web Geliştirici, HTML, CSS, React, Web Sitesi">
+  <meta name="author" content="Yunus İbin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <title>web developer</title>
+  <meta property="og:title" content="Yunus İbin - Frontend Developer" />
+  <meta property="og:description" content="Kendi retro dünyasında yazılım geliştiren frontend uzmanı Yunus İbin." />
+  <meta property="og:url" content="https://yunusibin33.github.io/yunusibin.io/" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://yunusibin33.github.io/yunusibin.io/" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      background-color: #000;
+      color: #00ff00;
+    }
+
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .typewriter {
+      font-size: 2rem;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      margin-top: 50px;
+      text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+    }
+
+    .hero h1.typewriter {
+      font-size: 1.5rem;
+      white-space: pre-wrap;
+      overflow: hidden;
+      width: 90%;
+      max-width: 800px;
+      min-height: 300px;
+      text-align: left;
+      animation: blink 0.75s step-end infinite;
+      z-index: 2;
+      padding-top: 8px;
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent
+      }
+    }
+
+    .terminal-bg::before {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 200%;
+      background: repeating-linear-gradient(0deg,
+          rgba(0, 255, 0, 0.05) 0,
+          rgba(0, 255, 0, 0.05) 1px,
+          transparent 1px,
+          transparent 2px);
+      animation: scrollLights 8s linear infinite;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    @keyframes scrollLights {
+      from {
+        top: -100%
+      }
+
+      to {
+        top: 0%
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s ease-in 6s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    section {
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #00ff00;
+      margin-bottom: 2rem;
+    }
+
+    a,
+    a:hover {
+      color: #00ff00;
+    }
+
+    footer {
+      background: #111;
+      color: #00ff00;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .zoom-img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .zoom-img:hover {
+      transform: scale(2.6);
+      /* Resmi büyüt */
+      box-shadow: 0 10px 20px rgba(0, 255, 153, 0.6);
+      /* Hafif gölge efekti */
+      z-index: 9999;
+      border-radius: 10px !important;
+    }
+
+    @media (max-width: 768px) {
+      .zoom-img:hover {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+  <style>
+    /* İletişim bölümünde stil düzenlemeleri */
+    #contact {
+      padding: 80px 20px;
+      color: white;
+    }
+
+    .form-control {
+      background-color: #222;
+      border-color: #00ffcc;
+      color: white;
+    }
+
+    .form-control:focus {
+      background-color: #333;
+      border-color: #00ff99;
+      box-shadow: 0 0 10px rgba(0, 255, 153, 0.8);
+    }
+
+    .btn-success {
+      background-color: #00ff99;
+      border-color: #00ff99;
+      color: #000;
+    }
+
+    .btn-success:hover {
+      background-color: #00cc7f;
+      border-color: #00cc7f;
+    }
+
+    /* Kartın gölge efekti */
+    .card {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+  </style>
 </head>
 
 <body>
-  <!--Hey! This is the original version
-of Simple CSS Waves-->
-
-  <div class="header">
-    <nav class="navbar">
-      <div class="navbar-container container">
-          <input type="checkbox" name="" id="">
-          <div class="hamburger-lines">
-              <span class="line line1"></span>
-              <span class="line line2"></span>
-              <span class="line line3"></span>
-          </div>
-          <ul class="menu-items">
-             <li><a href="#home"><span class="navbar-home">Anasayfa</span></a></li>
-        <li><a href="#about">Hakkında</a></li>
-        <li><a href="#skils">Uzmanlık</a></li>
-        <li><a href="#contact">İletişim</a></li>
-          </ul>
-          <h1 class="logo">
-            <main>
-              <div class="clip-text">
-                MY-PAGE
-              </div>
-            </main>
-            </span></h1>
-      </div>
-  </nav>
-
-    <div class="">
-      <section id="home" class="sec1 demo">
-        <div class="demo">
-          <div class="content">
-            <div id="large-header" class="large-header">
-              <canvas id="demo-canvas"></canvas>
-              <h1 class="main-title"><a href="#about" class="btn-shine" target="_blank">Front-End Developer</a>
-                <a href="#about"><span class="arrow mb-5"></span></a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="about" class="sec2">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-              <div class="container">
-                <div class="card card0">
-                </div>
-              </div>
-            </div>
-            <div class="col-sm about-cards">
-              <h1 class="text-left about-title mb-5">Ben<span class="about-title-span"> Kimim</span>?</h1>
-              <p class="text-justify about-text">
-                Merhaba Ben Yunus 22 yaşındayım Erzincan Binali Yıldırım Üniversitesi Sağlık Bilgi Sistemleri Ön-lisans mezunuyum ,
-                yazılım sektörüne 16 yaşında atıldım . İlk geliştirmelerim mobile üzerine oldu,
-                daha sonra Front-End tarafına geçtim html, css, php, javascript öğrendim. 
-                ardından boostrap jquery ve daha birden fazla kütüphanelerle tanıştım.
-                Bu kütüphaneler daha profesyonel işler yapmama yardımcı oluyor.
-              </p>
-              <div class="text-right mt-5">
-                <a class="effect1" href="https://yunusibin33.github.io/yunusibin.io/builder/build.html">
-                  Hakkımda Daha Fazlası
-                  <span class="bg"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="skils" class="sec3">
-        <div class="container">
-          <div><h3 class="text-center about-title pt-3">Uzmanlık <span class="about-title-span">Alanlarım</span></h3></div>
-          <div class="row">
-            <div class="col-sm mt-5">
-
-              <div class="card-slider-grid ">
-                <a class="card-slider" href="https://getbootstrap.com/">
-                  <div class="card-slider__background" style="background-image: url(./img/boostrap_img.png);"></div>
-                  <div class="card-slider__content">
-                    <p class="card-slider__category">Boostrap</p>
-                    <h3 class="card-slider__heading"></h3>
-                  </div>
-                </a>
-                <a class="card-slider" href="https://www.w3schools.com/css/default.asp">
-                  <div class="card-slider__background" style="background-image: url(./img/react-1.jpg);"></div>
-                  <div class="card-slider__content">
-                    <p class="card-slider__category">JQUERY</p>
-                    <h3 class="card-slider__heading"></h3>
-                  </div>
-                </a>
-                <a class="card-slider" href="https://www.w3schools.com/html/default.asp">
-                  <div class="card-slider__background"
-                    style="background-image: url(./img/cours1.png); background-size: cover; background-size: 500px 300px;">
-                  </div>
-                  <div class="card-slider__content">
-                    <p class="card-slider__category">HTML CSS</p>
-                    <h3 class="card-slider__heading"></h3>
-                  </div>
-                </a>
-                <a class="card-slider" href="https://jquery.com/">
-                  <div class="card-slider__background" style="background-image: url(./img/1573015423WS16.jpg);"></div>
-                  <div class="card-slider__content">
-                    <p class="card-slider__category">JQUERY</p>
-                    <h3 class="card-slider__heading"></h3>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="contact" class="sec4">
-        <div class="background pt-5">
-          <div class="container">
-            <div class="screen">
-              <div class="screen-header">
-                <div class="screen-header-left">
-                  <div class="screen-header-button close"></div>
-                  <div class="screen-header-button maximize"></div>
-                  <div class="screen-header-button minimize"></div>
-                </div>
-                <div class="screen-header-right">
-                  <div class="screen-header-ellipsis"></div>
-                  <div class="screen-header-ellipsis"></div>
-                  <div class="screen-header-ellipsis"></div>
-                </div>
-              </div>
-              <div class="screen-body">
-                <div class="screen-body-item left">
-                  <div class="app-title text-left">
-                    <span>CONTACT</span>
-                    <span>US</span>
-                  </div>
-                  <div class="app-contact">CONTACT INFO : +90000000000</div>
-                </div>
-                <div class="screen-body-item">
-                  <div class="app-form">
-                    <div class="app-form-group">
-                      <input class="app-form-control" disabled placeholder="NAME" value="Yunus ibin">
-                    </div>
-                    <div class="app-form-group">
-                      <input class="app-form-control" disabled placeholder="yunusibin44@gmail.com">
-                    </div>
-                    <div class="app-form-group">
-                      <input class="app-form-control" disabled placeholder="CONTACT NO">
-                    </div>
-                    <div class="app-form-group message">
-                      <input class="app-form-control" disabled placeholder="MESSAGE">
-                    </div>
-                    <div class="app-form-group buttons">
-                      <button class="app-form-button">CANCEL</button>
-                      <button class="app-form-button">SEND</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="end">
-        <div class="last-text pt-3 pb-3">
-          © 2023 by Yunus İbin Tüm Hakları Saklıdır
-        </div>
-
-        <div class="top">
-          <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
-        </div>
-      </section>
-      <div id="gb-widget-4217"
-        style="
-        bottom: 14px; right: 16px; opacity: 1; transition: opacity 0.9s ease 0s; 
-        box-sizing: border-box; direction: ltr; text-align: right;
-        position: fixed !important; z-index: 16000160 !important;">
-        <div class="q8c6tt-2 eiGYSu">
-        <a size="50" href="https://wa.me/905070777506" target="_blank" color="#4dc247" id="" class="q8c6tt-0 jWcIXO">
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" 
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          style="width: 20%; height: 20%; margin-bottom:35px ; fill: rgb(45, 219, 89); stroke: none;">
-        <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z">
-              </path>
-            </svg></a></div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top border-bottom border-success">
+    <div class="container">
+      <a class="navbar-brand text-success" href="#">Yunus</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-success" href="#about">Hakkımda</a></li>
+          <li class="nav-item"><a class="nav-link text-success" href="#projects">Projeler</a></li>
+          <li class="nav-item"><a class="nav-link text-success" href="#contact">İletişim</a></li>
+        </ul>
       </div>
     </div>
-    <script src="js/app.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo.js"></script>
- 
+  </nav>
+  <!-- Hero Section --><canvas id="stars"></canvas>
+  <section class="hero terminal-bg">
+    <h1 class="typewriter"></h1>
+    <div class="mt-4 fade-in">
+      <a href="#projects" class="btn btn-outline-success">Projelerimi Gör</a>
+    </div>
+  </section>
+  <!-- Hakkımda -->
+  <div class="container">
+    <section id="about" style=" color: #00ff99; padding: 100px 20px 80px;">
+      <div class="container">
+        <h2 class="section-title text-center mb-5" style="color: #00ffcc;">Hakkımda</h2>
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p>
+              Merhaba, ben Yunus. Kodlama maceram daha çocukken başladı. Ortaokul yıllarımda yazdığım ilk satırda
+              ekranda çıkan basit bir metin bile beni heyecanlandırıyordu.
+            </p>
+            <p>
+              Lise dönemimde bu tutkum daha da güçlendi. Üniversitede bilgisayar teknolojileri bölümünü kazanarak bu
+              hayalin üzerine inşa etmeye devam ettim. Okurken sürekli küçük projeler geliştiriyor, canım sıkıldıkça
+              kendi web sitelerimi tasarlıyordum.
+            </p>
+            <p>
+              Mezuniyet sonrası bir siber güvenlik firmasında büyük bir projede yer aldım. 6 ay süren bu süreçte sadece
+              yazılım geliştirmeyi değil, takım çalışması, sorumluluk ve liderliği de öğrendim. Stajyer arkadaşlara
+              mentorluk yaptım, birlikte büyüdük.
+            </p>
+            <p>
+              Daha sonra web scraping alanında kendimi geliştirerek 6000’den fazla ürün barındıran bir e-ticaret sitesi
+              kurdum. Şu an hâlâ aktif olarak yeni projeler geliştiriyor ve sınırlarımı genişletmeye devam ediyorum.
+            </p>
+          </div>
+          <div class="col-md-6 text-center mt-4 mt-md-0">
+            <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" alt="developer"
+              class="img-fluid rounded" style="max-width: 80%; box-shadow: 0 0 30px #00ff99;">
+          </div>
+        </div>
+        <!-- Kartlar -->
+        <div class="row text-center mt-5">
+          <div class="col-md-4">
+            <div class="card bg-black border-success text-success h-100">
+              <div class="card-body">
+                <i class="fas fa-code fa-2x mb-3"></i>
+                <h5 class="card-title">Frontend</h5>
+                <p class="card-text">HTML, CSS, JavaScript, Bootstrap, jQuery gibi teknolojilerle kullanıcı dostu ve
+                  modern arayüzler geliştiriyorum.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card bg-black border-success text-success h-100">
+              <div class="card-body">
+                <i class="fas fa-shield-alt fa-2x mb-3"></i>
+                <h5 class="card-title">Siber Güvenlik</h5>
+                <p class="card-text">Kurumsal bir projede sistem geliştirdim, ekiplerle koordineli çalıştım, gerçek
+                  güvenlik süreçlerinde yer aldım.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card bg-black border-success text-success h-100">
+              <div class="card-body">
+                <i class="fas fa-database fa-2x mb-3"></i>
+                <h5 class="card-title">Web Scraping</h5>
+                <p class="card-text">Binlerce ürünü hızlıca veri madenciliğiyle çekip, e-ticaret sitelerinde
+                  kullanılabilir hale getiriyorum.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Projeler -->
+  <section id="projects" style="color: #00ffcc; padding: 100px 20px;">
+    <div class="container">
+      <h2 class="section-title text-center mb-5" style="color: #00ffcc;">Projelerim</h2>
+      <div class="row g-4">
+        <!-- PROJE KARTI BAŞLANGIÇ -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-success border border-success h-100">
+            <img src="Ekran görüntüsü 2025-04-18 012631.png" class="card-img-top zoom-img" alt="E-Ticaret Sitesi" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">E-Ticaret Sitesi</h5>
+              <p class="card-text">6000'e yakın ürünle çalışan dinamik, web scraping destekli modern e-ticaret
+                platformu.</p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 text-end">
+              <a href="https://fordotoyedek.github.io/fordotoyedek/" class="btn btn-sm btn-outline-success"
+                target="_blank">Siteyi Gör</a>
+            </div>
+          </div>
+        </div>
+        <!-- PROJEKARTI BİTİŞ -->
+        <!-- Yeni projeler buraya -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-success border border-success h-100">
+            <img src="Ekran görüntüsü 2025-04-18 012254.png" class="card-img-top zoom-img" alt="Güvenlik Paneli" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">C-PROT</h5>
+              <p class="card-text">Bir siber güvenlik firmasında geliştirdiğim, log takip ve tehdit analizi sunan
+                kontrol paneli.</p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 text-end">
+              <a href="https://c-prot.com/" class="btn btn-sm btn-outline-success" target="_blank">Projeyi İncele</a>
+            </div>
+          </div>
+        </div>
+        <!-- Örnek Proje -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-success border border-success h-100">
+            <img src="Ekran görüntüsü 2025-04-18 012411.png" class="card-img-top zoom-img" alt="Kişisel Blog" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">Kişisel Blog</h5>
+              <p class="card-text">Frontend teknolojileriyle ilgili paylaşımlar yaptığım ve kendimi geliştirdiğim
+                kişisel blog platformu.</p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 text-end">
+              <a href="https://github.com/yunusibin33" class="btn btn-sm btn-outline-success" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- İletişim -->
+  <section id="contact" style="color: white; padding: 100px 20px;">
+    <div class="container">
+      <h2 class="section-title text-center mb-5" style="color: #00ffcc;">İletişime Geçin</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card bg-dark text-light border border-success">
+            <div class="card-body">
+              <form id="contactForm">
+                <!-- Ad Soyad -->
+                <div class="mb-3">
+                  <label for="name" class="form-label">Adınız</label>
+                  <input type="text" class="form-control" id="name" placeholder="Adınızı girin" required>
+                </div>
+                <!-- E-posta -->
+                <div class="mb-3">
+                  <label for="email" class="form-label">E-posta</label>
+                  <input type="email" class="form-control" id="email" placeholder="E-posta adresinizi girin" required>
+                </div>
+                <!-- Mesaj -->
+                <div class="mb-3">
+                  <label for="message" class="form-label">Mesajınız</label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Mesajınızı buraya yazın"
+                    required></textarea>
+                </div>
+                <!-- Gönder Butonu -->
+                <button type="submit" class="btn btn-success w-100">Mesajı Gönder</button>
+              </form>
+              <div id="formMessage" class="mt-3" style="display: none; color: #00ff99;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Formun sayfayı yeniden yüklemesini engelle
+      let name = document.getElementById('name').value;
+      let email = document.getElementById('email').value;
+      let message = document.getElementById('message').value;
+      // WhatsApp mesaj formatı
+      let whatsappMessage = `Ad: ${name}\nE-posta: ${email}\nMesaj: ${message}`;
+      // WhatsApp URL (Telefon numarasını buraya eklemeniz gerekiyor)
+      let phoneNumber = '+905070777506'; // Kendi WhatsApp numaranızı buraya yazın
+      let whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+      // Kullanıcıyı WhatsApp'a yönlendirme
+      window.open(whatsappURL, '_blank');
+      // Kullanıcıya bir başarı mesajı göster
+      let formMessage = document.getElementById('formMessage');
+      formMessage.style.display = 'block';
+      formMessage.innerHTML = 'Mesajınız başarıyla gönderiliyor...';
+      // Formu temizle
+      document.getElementById('contactForm').reset();
+    });
+  </script>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Yunus | Frontend Developer</p>
+  </footer>
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      const message = [
+        "Merhaba, ben Yunus İbin 👋",
+        "Çocukluk hayaliyle başlayan yazılım serüvenim,",
+        "yıllar içinde bir tutkudan profesyonelliğe dönüştü.",
+        "Kodladıkça öğrenen, öğrendikçe öğreten biriyim.",
+        "Gerçek projelerde yer aldım, ekip yönettim, sistemler geliştirdim.",
+        "Siber güvenlikten e-ticarete, her satırda tutku var.",
+        "Haydi, size nasıl yardımcı olabileceğimi konuşalım."
+      ];
+      let line = 0;
+      let char = 0;
+      function typeWriter() {
+        if (line < message.length) {
+          if (char < message[line].length) {
+            $('.typewriter').append(message[line].charAt(char));
+            char++;
+            setTimeout(typeWriter, 30);
+          } else {
+            $('.typewriter').append('\n');
+            line++;
+            char = 0;
+            setTimeout(typeWriter, 500); // Biraz bekle sonra yeni satıra geç
+          }
+        }
+      }
+      typeWriter();
+      $('#contact-form').on('submit', function (e) {
+        e.preventDefault();
+        alert('Mesaj gönderildi! Backend henüz yok ama yakında olur 😎');
+      });
+    });
+  </script>
+  <script>const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = [];
+
+    for (let i = 0; i < 100; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        speed: Math.random() * 0.5 + 0.2
+      });
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#ffffff";
+
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        star.y += star.speed;
+
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+
+      requestAnimationFrame(animateStars);
+    }
+
+    animateStars();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 
 </html>

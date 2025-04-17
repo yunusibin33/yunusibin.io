@@ -1,2 +1,0 @@
-# yunusibin.io
-website
