@@ -1,133 +1,724 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Yunus İbin | Frontend Developer</title>
-  <meta name="google-site-verification" content="UGCqJO2FrYrCHRnzdFJMiH4CEVhMRIoOTxKnOhPkYq4" />
-  <meta name="description"
-    content="Frontend geliştirici Yunus İbin'in kişisel portföy sitesine hoş geldiniz. HTML, CSS, JavaScript, React ve daha fazlası.">
-  <meta name="keywords" content="Yunus İbin, Frontend Developer, Web Geliştirici, HTML, CSS, React, Web Sitesi">
-  <meta name="author" content="Yunus İbin">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Yunus İbin - Frontend Developer" />
-  <meta property="og:description" content="Kendi retro dünyasında yazılım geliştiren frontend uzmanı Yunus İbin." />
-  <meta property="og:url" content="https://yunusibin33.github.io/yunusibin.io/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PALMAJANS | Web Tasarım, 360 Sanal Tur, QR Menü ve Kurumsal Dijital Çözümler</title>
+  <meta name="description" content="PALMAJANS; web tasarım, 360 sanal tur, restoranlara özel QR menü, dijital kartvizit ve SEO temelli kurumsal dijital çözümler sunar." />
+  <meta name="keywords" content="web tasarım, 360 sanal tur, qr menü, dijital kartvizit, kurumsal web sitesi, restoran qr menü, avukat web sitesi, palmajans" />
+  <meta name="author" content="PALMAJANS" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b1020" />
+
+  <meta property="og:title" content="PALMAJANS | Dijitalde Güçlü Görün, Güvenle Büyü" />
+  <meta property="og:description" content="Web tasarım, 360 sanal tur, QR menü, dijital kartvizit ve premium dijital ajans çözümleri." />
   <meta property="og:type" content="website" />
-  <link rel="canonical" href="https://yunusibin33.github.io/yunusibin.io/" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-  @keyframes blink{50%{border-color:transparent}}@keyframes scrollLights{0%{top:-100%}to{top:0}}@keyframes fadeIn{to{opacity:1}}body{margin:0;padding:0;scroll-behavior:smooth;background-color:#000}#stars{position:fixed;top:0;left:0;z-index:-1}.hero{height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;text-align:center;z-index:1}.typewriter,body{font-family:'Courier New',Courier,monospace}.typewriter{font-size:2rem;color:#0fc;text-align:center;margin-top:50px;text-shadow:0 0 5px #0fc,0 0 10px #0fc}.hero h1.typewriter{font-size:1.5rem;white-space:pre-wrap;overflow:hidden;width:90%;max-width:800px;min-height:300px;text-align:left;animation:blink .75s step-end infinite;z-index:2;padding-top:8px}.terminal-bg::before{content:"";position:absolute;top:-100%;left:0;width:100%;height:200%;background:repeating-linear-gradient(0deg,rgba(0,255,0,.05) 0,rgba(0,255,0,.05) 1px,transparent 1px,transparent 2px);animation:scrollLights 8s linear infinite;z-index:0;opacity:.6}.fade-in{opacity:0;animation:fadeIn 2s ease-in 6s forwards}section{padding:80px 20px}.section-title{text-align:center;color:#0f0;margin-bottom:2rem}a,a:hover,body,footer{color:#0f0}footer{background:#111;text-align:center;padding:20px 0}.zoom-img{transition:transform .3s ease,box-shadow .3s ease}.zoom-img:hover{transform:scale(2.6);box-shadow:0 10px 20px rgba(0,255,153,.6);z-index:9999;border-radius:10px!important}@media (max-width:768px){.zoom-img:hover{transform:scale(1.1)}}  #contact{padding:80px 20px;color:#fff}.form-control{background-color:#222;border-color:#0fc;color:#fff}.form-control:focus{background-color:#333;border-color:#0f9;box-shadow:0 0 10px rgba(0,255,153,.8)}.btn-success{background-color:#0f9;border-color:#0f9;color:#000}.btn-success:hover{background-color:#00cc7f;border-color:#00cc7f}.card{box-shadow:0 10px 30px rgba(0,0,0,.2);border-radius:10px}
-  </style>
+  <meta property="og:locale" content="tr_TR" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+<script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"PALMAJANS",
+    "url":"https://www.palmajans.com",
+    "description":"Web tasarım, 360 sanal tur, QR menü, dijital kartvizit ve SEO temelli kurumsal çözümler sunan dijital ajans.",
+    "sameAs":[
+      "https://www.instagram.com/",
+      "https://www.linkedin.com/"
+    ]
+  }
+  </script>
 </head>
 <body>
- <!-- Navbar --> <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top border-bottom border-success"> <div class="container"> <a class="navbar-brand text-success" href="#">Yunus</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarNav"> <ul class="navbar-nav ms-auto"> <li class="nav-item"><a class="nav-link text-success" href="#about">Hakkımda</a></li> <li class="nav-item"><a class="nav-link text-success" href="#projects">Projeler</a></li> <li class="nav-item"><a class="nav-link text-success" href="#contact">İletişim</a></li> </ul> </div> </div> </nav> <!-- Hero Section --><canvas id="stars"></canvas> <section class="hero terminal-bg"> <h1 class="typewriter"></h1> <div class="mt-4 fade-in"> <a href="#projects" class="btn btn-outline-success">Projelerimi Gör</a> </div> </section> <!-- Hakkımda --> <div class="container"> <section id="about" style=" color: #00ff99; padding: 100px 20px 80px;"> <div class="container"> <h2 class="section-title text-center mb-5" style="color: #00ffcc;">Hakkımda</h2> <div class="row align-items-center"> <div class="col-md-6"> <p> Merhaba, ben Yunus. Kodlama maceram daha çocukken başladı. Ortaokul yıllarımda yazdığım ilk satırda ekranda çıkan basit bir metin bile beni heyecanlandırıyordu. </p> <p> Lise dönemimde bu tutkum daha da güçlendi. Üniversitede bilgisayar teknolojileri bölümünü kazanarak bu hayalin üzerine inşa etmeye devam ettim. Okurken sürekli küçük projeler geliştiriyor, canım sıkıldıkça kendi web sitelerimi tasarlıyordum. </p> <p> Mezuniyet sonrası bir siber güvenlik firmasında büyük bir projede yer aldım. 6 ay süren bu süreçte sadece yazılım geliştirmeyi değil, takım çalışması, sorumluluk ve liderliği de öğrendim. Stajyer arkadaşlara mentorluk yaptım, birlikte büyüdük. </p> <p> Daha sonra web scraping alanında kendimi geliştirerek 6000’den fazla ürün barındıran bir e-ticaret sitesi kurdum. Şu an hâlâ aktif olarak yeni projeler geliştiriyor ve sınırlarımı genişletmeye devam ediyorum. </p> </div> <div class="col-md-6 text-center mt-4 mt-md-0"> <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" alt="developer" class="img-fluid rounded" style="max-width: 80%; box-shadow: 0 0 30px #00ff99;"> </div> </div> <!-- Kartlar --> <div class="row text-center mt-5"> <div class="col-md-4"> <div class="card bg-black border-success text-success h-100"> <div class="card-body"> <i class="fas fa-code fa-2x mb-3"></i> <h5 class="card-title">Frontend</h5> <p class="card-text">HTML, CSS, JavaScript, Bootstrap, jQuery gibi teknolojilerle kullanıcı dostu ve modern arayüzler geliştiriyorum.</p> </div> </div> </div> <div class="col-md-4 mt-4 mt-md-0"> <div class="card bg-black border-success text-success h-100"> <div class="card-body"> <i class="fas fa-shield-alt fa-2x mb-3"></i> <h5 class="card-title">Siber Güvenlik</h5> <p class="card-text">Kurumsal bir projede sistem geliştirdim, ekiplerle koordineli çalıştım, gerçek güvenlik süreçlerinde yer aldım.</p> </div> </div> </div> <div class="col-md-4 mt-4 mt-md-0"> <div class="card bg-black border-success text-success h-100"> <div class="card-body"> <i class="fas fa-database fa-2x mb-3"></i> <h5 class="card-title">Web Scraping</h5> <p class="card-text">Binlerce ürünü hızlıca veri madenciliğiyle çekip, e-ticaret sitelerinde kullanılabilir hale getiriyorum.</p> </div> </div> </div> </div> </div> </section> </div> <!-- Projeler --> <section id="projects" style="color: #00ffcc; padding: 100px 20px;"> <div class="container"> <h2 class="section-title text-center mb-5" style="color: #00ffcc;">Projelerim</h2> <div class="row g-4"> <!-- PROJE KARTI BAŞLANGIÇ --> <div class="col-md-4"> <div class="card bg-dark text-success border border-success h-100"> <img src="Ekran görüntüsü 2025-04-18 012631.png" class="card-img-top zoom-img" alt="E-Ticaret Sitesi" loading="lazy"> <div class="card-body"> <h5 class="card-title">E-Ticaret Sitesi</h5> <p class="card-text">6000'e yakın ürünle çalışan dinamik, web scraping destekli modern e-ticaret platformu.</p> </div> <div class="card-footer bg-transparent border-top-0 text-end"> <a href="https://fordotoyedek.github.io/fordotoyedek/" class="btn btn-sm btn-outline-success" target="_blank">Siteyi Gör</a> </div> </div> </div> <!-- PROJEKARTI BİTİŞ --> <!-- Yeni projeler buraya --> <div class="col-md-4"> <div class="card bg-dark text-success border border-success h-100"> <img src="Ekran görüntüsü 2025-04-18 012254.png" class="card-img-top zoom-img" alt="Güvenlik Paneli" loading="lazy"> <div class="card-body"> <h5 class="card-title">C-PROT</h5> <p class="card-text">Bir siber güvenlik firmasında geliştirdiğim, log takip ve tehdit analizi sunan kontrol paneli.</p> </div> <div class="card-footer bg-transparent border-top-0 text-end"> <a href="https://c-prot.com/" class="btn btn-sm btn-outline-success" target="_blank">Projeyi İncele</a> </div> </div> </div> <!-- Örnek Proje --> <div class="col-md-4"> <div class="card bg-dark text-success border border-success h-100"> <img src="Ekran görüntüsü 2025-04-18 012411.png" class="card-img-top zoom-img" alt="Kişisel Blog" loading="lazy"> <div class="card-body"> <h5 class="card-title">Kişisel Blog</h5> <p class="card-text">Frontend teknolojileriyle ilgili paylaşımlar yaptığım ve kendimi geliştirdiğim kişisel blog platformu.</p> </div> <div class="card-footer bg-transparent border-top-0 text-end"> <a href="https://github.com/yunusibin33" class="btn btn-sm btn-outline-success" target="_blank">GitHub</a> </div> </div> </div> </div> </div> </section> <!-- İletişim --> <section id="contact" style="color: white; padding: 100px 20px;"> <div class="container"> <h2 class="section-title text-center mb-5" style="color: #00ffcc;">İletişime Geçin</h2> <div class="row justify-content-center"> <div class="col-md-8 col-lg-6"> <div class="card bg-dark text-light border border-success"> <div class="card-body"> <form id="contactForm"> <!-- Ad Soyad --> <div class="mb-3"> <label for="name" class="form-label">Adınız</label> <input type="text" class="form-control" id="name" placeholder="Adınızı girin" required> </div> <!-- E-posta --> <div class="mb-3"> <label for="email" class="form-label">E-posta</label> <input type="email" class="form-control" id="email" placeholder="E-posta adresinizi girin" required> </div> <!-- Mesaj --> <div class="mb-3"> <label for="message" class="form-label">Mesajınız</label> <textarea class="form-control" id="message" rows="5" placeholder="Mesajınızı buraya yazın" required></textarea> </div> <!-- Gönder Butonu --> <button type="submit" class="btn btn-success w-100">Mesajı Gönder</button> </form> <div id="formMessage" class="mt-3" style="display: none; color: #00ff99;"></div> </div> </div> </div> </div> </div> </section>
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function (event) {
-      event.preventDefault(); // Formun sayfayı yeniden yüklemesini engelle
-      let name = document.getElementById('name').value;
-      let email = document.getElementById('email').value;
-      let message = document.getElementById('message').value;
-      // WhatsApp mesaj formatı
-      let whatsappMessage = `Ad: ${name}\nE-posta: ${email}\nMesaj: ${message}`;
-      // WhatsApp URL (Telefon numarasını buraya eklemeniz gerekiyor)
-      let phoneNumber = '+905070777506'; // Kendi WhatsApp numaranızı buraya yazın
-      let whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
-      // Kullanıcıyı WhatsApp'a yönlendirme
-      window.open(whatsappURL, '_blank');
-      // Kullanıcıya bir başarı mesajı göster
-      let formMessage = document.getElementById('formMessage');
-      formMessage.style.display = 'block';
-      formMessage.innerHTML = 'Mesajınız başarıyla gönderiliyor...';
-      // Formu temizle
-      document.getElementById('contactForm').reset();
-    });
-  </script>
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Yunus | Frontend Developer</p>
+  <div class="cursor-glow"></div>
+  <div class="noise"></div>
+
+  <header class="header" id="top">
+    <div class="container nav">
+      <a href="#top" class="logo" aria-label="PALMAJANS Anasayfa">
+        <span class="logo-mark">P</span>
+        <span class="logo-text">PALMAJANS</span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Ana menü">
+        <a href="#services">Hizmetler</a>
+        <a href="#demos">Demolar</a>
+        <a href="#sectors">Sektörler</a>
+        <a href="#results">Neden Biz?</a>
+        <a href="#contact">İletişim</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-primary nav-cta">Teklif Al</a>
+
+      <button class="mobile-toggle" aria-label="Menüyü aç">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu">
+      <a href="#services">Hizmetler</a>
+      <a href="#demos">Demolar</a>
+      <a href="#sectors">Sektörler</a>
+      <a href="#results">Neden Biz?</a>
+      <a href="#contact">İletişim</a>
+      <a href="#contact" class="btn btn-primary mobile-btn">Teklif Al</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="grid-lines"></span>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-left reveal">
+          <p class="eyebrow">PREMIUM DİJİTAL AJANS</p>
+          <h1>
+            Web sitesi değil,
+            <span>markanı dijitalde güçlendiren deneyimler tasarlıyoruz.</span>
+          </h1>
+          <p class="hero-text">
+            PALMAJANS; web tasarım, 360 sanal tur, QR menü, dijital kartvizit ve SEO temelli yapılar ile
+            işletmeleri dijitalde daha güvenilir, daha modern ve daha güçlü gösterir.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Projeni Başlat</a>
+            <a href="#demos" class="btn btn-secondary">Canlı Demoları İncele</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card floating">
+              <strong>360°</strong>
+              <span>Sanal Tur Çözümleri</span>
+            </div>
+            <div class="stat-card floating delay-1">
+              <strong>QR</strong>
+              <span>Restoran Menü Sistemleri</span>
+            </div>
+            <div class="stat-card floating delay-2">
+              <strong>SEO</strong>
+              <span>Teknik Altyapı ve Görünürlük</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right reveal">
+          <div class="hero-visual">
+            <div class="screen main-screen glass">
+              <div class="screen-top">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="screen-content">
+                <div class="screen-badge">PALMAJANS EXPERIENCE</div>
+                <h2>Dijital vitrinini sıradan bırakma.</h2>
+                <p>
+                  Müşteri seni aramadan önce web sitene bakar. Karar vermeden önce örnek ister.
+                  Güven duymadan önce tasarımını inceler.
+                </p>
+                <div class="mini-cards">
+                  <div class="mini-card">360 Sanal Tur</div>
+                  <div class="mini-card">QR Menü</div>
+                  <div class="mini-card">Avukat Site Demosu</div>
+                  <div class="mini-card">Dijital Kartvizit</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="floating-panel panel-a glass">
+              <span>Canlı Örnekler</span>
+              <strong>Müşterine sadece anlatma, göster.</strong>
+            </div>
+
+            <div class="floating-panel panel-b glass">
+              <span>Kurumsal Etki</span>
+              <strong>İlk izlenim profesyonellikten geçer.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll">
+        <span>Aşağı Kaydır</span>
+      </div>
+    </section>
+
+    <section class="brands-strip">
+      <div class="container brands-track">
+        <span>WEB TASARIM</span>
+        <span>360 SANAL TUR</span>
+        <span>QR MENÜ</span>
+        <span>DİJİTAL KARTVİZİT</span>
+        <span>SEO ALTYAPISI</span>
+        <span>KURUMSAL DİJİTAL KİMLİK</span>
+      </div>
+    </section>
+
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">HİZMETLER</p>
+          <h2>Sadece tasarım değil, güçlü dijital çözümler üretiyoruz</h2>
+          <p>İşletmeni dijitalde modern, güven veren ve tercih edilir hale getiren hizmetler sunuyoruz.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal tilt-card">
+            <div class="service-number">01</div>
+            <h3>Kurumsal Web Tasarım</h3>
+            <p>Markana özel, premium his veren ve dönüşüm odaklı modern web siteleri.</p>
+          </article>
+
+          <article class="service-card reveal tilt-card">
+            <div class="service-number">02</div>
+            <h3>360° Sanal Tur</h3>
+            <p>Müşteri işletmene gelmeden önce mekanı dijitalde gezsin, deneyimlesin.</p>
+          </article>
+
+          <article class="service-card reveal tilt-card">
+            <div class="service-number">03</div>
+            <h3>QR Menü</h3>
+            <p>Restoran, kafe ve işletmeler için mobil uyumlu, estetik ve hızlı menü sistemleri.</p>
+          </article>
+
+          <article class="service-card reveal tilt-card">
+            <div class="service-number">04</div>
+            <h3>Dijital Kartvizit</h3>
+            <p>Tek tıkla ulaşılabilen, paylaşılabilen ve modern marka sunumu sağlayan kartvizitler.</p>
+          </article>
+
+          <article class="service-card reveal tilt-card">
+            <div class="service-number">05</div>
+            <h3>Sektöre Özel Tasarım</h3>
+            <p>Avukat, restoran, klinik, emlak ve kurumsal firmalara özel dijital deneyimler.</p>
+          </article>
+
+          <article class="service-card reveal tilt-card highlight">
+            <div class="service-number">06</div>
+            <h3>SEO Temelli Altyapı</h3>
+            <p>Google’da üst sıraları hedefleyen teknik temel, hızlı yapı ve doğru içerik mimarisi.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="demos section" id="demos">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">CANLI DEMOLAR</p>
+          <h2>Yaptıklarımızı sadece anlatmıyor, gösteriyoruz</h2>
+          <p>Müşterinin güvenmesi için örnek görmesi gerekir. Bu yüzden her hizmeti canlı demo mantığıyla sunuyoruz.</p>
+        </div>
+
+        <div class="demo-grid">
+          <article class="demo-card reveal glass">
+            <div class="demo-visual demo-visual-360">
+              <div class="ring ring-1"></div>
+              <div class="ring ring-2"></div>
+              <div class="ring ring-3"></div>
+              <span>360°</span>
+            </div>
+            <div class="demo-content">
+              <h3>360 Sanal Tur Demo</h3>
+              <p>Mekanını dijitalde gezdiren, premium ve etkileyici sunum deneyimi.</p>
+              <a href="#" class="demo-link">Canlı Geziyi Gör</a>
+            </div>
+          </article>
+
+          <article class="demo-card reveal glass">
+            <div class="demo-visual phone-demo">
+              <div class="phone-frame">
+                <div class="phone-screen">
+                  <div class="menu-header">QR Menü</div>
+                  <div class="menu-item"><span>Izgara Köfte</span><strong>240₺</strong></div>
+                  <div class="menu-item"><span>Tavuk Salata</span><strong>180₺</strong></div>
+                  <div class="menu-item"><span>Soğuk Kahve</span><strong>95₺</strong></div>
+                </div>
+              </div>
+            </div>
+            <div class="demo-content">
+              <h3>QR Menü Demo</h3>
+              <p>Restoran ve kafeler için estetik, hızlı ve mobil uyumlu dijital menü sistemi.</p>
+              <a href="#" class="demo-link">Menü Demosunu İncele</a>
+            </div>
+          </article>
+
+          <article class="demo-card reveal glass">
+            <div class="demo-visual law-demo">
+              <div class="law-screen">
+                <div class="law-top"></div>
+                <h4>Yılmaz Hukuk</h4>
+                <p>Güven veren kurumsal hukuk bürosu tasarımı</p>
+              </div>
+            </div>
+            <div class="demo-content">
+              <h3>Avukat Web Sitesi Demo</h3>
+              <p>Prestij, uzmanlık ve güven hissi veren hukuk bürosu arayüzleri.</p>
+              <a href="#" class="demo-link">Demo Siteyi Gör</a>
+            </div>
+          </article>
+
+          <article class="demo-card reveal glass">
+            <div class="demo-visual card-demo">
+              <div class="digital-card">
+                <span>PALMAJANS</span>
+                <strong>Özlem Şenol</strong>
+                <p>Frontend Developer / Dijital Çözümler</p>
+              </div>
+            </div>
+            <div class="demo-content">
+              <h3>Dijital Kartvizit Demo</h3>
+              <p>Telefonla paylaşılabilen, konum ve iletişim bilgileriyle modern dijital kartvizitler.</p>
+              <a href="#" class="demo-link">Kartviziti Gör</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+<section class="experience section" id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">GERÇEK 360 SANAL TUR</p>
+      <h2>Hazır örnek bir mekanı şimdi burada gez</h2>
+      <p>
+        Aşağıdaki alan gerçek bir 3D sanal tur demosudur. Ziyaretçi mouse ile bakabilir,
+        alanda ilerleyebilir ve mekan hissini doğrudan test edebilir.
+      </p>
+    </div>
+
+    <div class="experience-real-grid">
+      <div class="tour-copy reveal">
+        <div class="tour-copy-card glass">
+          <p class="mini-label">CANLI TEST ALANI</p>
+          <h3>Gerçek mekanı direkt web sitende deneyimlet</h3>
+          <p>
+            Bu alan artık sahte bir demo değil. Gerçek bir mekana ait gömülü sanal tur
+            açılıyor. Daha sonra bunu kendi çektiğin 360 turlarla birebir değiştirebiliriz.
+          </p>
+
+          <ul class="feature-list">
+            <li>Gerçek mekan içinde dolaşma hissi</li>
+            <li>Mouse ile sağa sola ve yukarı aşağı bakış</li>
+            <li>Restoran, ofis, showroom, klinik için uyarlanabilir yapı</li>
+            <li>Kendi çektiğin tur linkleriyle anında değiştirilebilir</li>
+          </ul>
+
+          <div class="real-tour-selector">
+            <button class="real-tour-btn active"
+              data-tour="https://my.matterport.com/show/?m=atsB9DAv845">
+              Restoran
+            </button>
+
+            <button class="real-tour-btn"
+              data-tour="https://my.matterport.com/show/?m=w3f5Mqt6Vzt">
+              Ofis
+            </button>
+
+            <button class="real-tour-btn"
+              data-tour="https://my.matterport.com/show/?m=4wrpUDfGe3u">
+              Açık Alan
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="real-tour-stage reveal glass">
+        <iframe
+          id="realTourFrame"
+          src="https://my.matterport.com/show/?m=atsB9DAv845"
+          title="Gerçek 360 Sanal Tur"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="qr-live section" id="qr-live">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">CANLI QR MENÜ DEMOSU</p>
+      <h2>QR menü böyle görünmeli: şık, hızlı, premium</h2>
+      <p>
+        Kullanıcı kategori değiştirir, ürünleri inceler, fiyat yapısını görür.
+        Böylece restorana, kafeye veya işletmeye ne teslim edeceğini doğrudan gösterirsin.
+      </p>
+    </div>
+
+    <div class="qr-live-grid">
+      <div class="qr-phone-wrap reveal">
+        <div class="qr-phone-premium glass">
+          <div class="qr-phone-top">
+            <span></span>
+            <strong>PALMAJANS DEMO MENU</strong>
+          </div>
+
+          <div class="qr-restaurant-hero">
+            <div>
+              <p>Lezzet Bahçesi</p>
+              <span>Restoran & Kafe Demo</span>
+            </div>
+            <button>Rezervasyon</button>
+          </div>
+
+          <div class="qr-tabs">
+            <button class="qr-tab active" data-category="main">Ana Yemek</button>
+            <button class="qr-tab" data-category="drink">İçecek</button>
+            <button class="qr-tab" data-category="dessert">Tatlı</button>
+          </div>
+
+          <div class="qr-products" id="qrProducts">
+            <!-- JS dolduracak -->
+          </div>
+        </div>
+      </div>
+
+      <div class="qr-copy reveal">
+        <div class="tour-copy-card glass">
+          <p class="mini-label">QR MENÜ SİSTEMİ</p>
+          <h3>Sadece liste değil, dijital restoran deneyimi</h3>
+          <p>
+            Bu bölümde ziyaretçi menünün nasıl çalıştığını test eder. Kategoriler arası geçiş,
+            ürün kartları, açıklamalar ve fiyat yapısı canlı gösterilir.
+          </p>
+
+          <ul class="feature-list">
+            <li>Mobil uyumlu premium görünüm</li>
+            <li>Kategori bazlı akış</li>
+            <li>Restoran / kafe / otel için uyarlanabilir yapı</li>
+            <li>İstenirse rezervasyon ve kampanya modülü eklenebilir</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="showroom section" id="showroom">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">GENEL GÖSTERİM ALANI</p>
+      <h2>Bütün sektörler için örnek dijital sunum alanı</h2>
+      <p>
+        Tek bir mesleğe değil, bütün iş kollarına hitap eden örnek gösterim alanı.
+        Kullanıcı filtre seçer, o sektöre özel hangi dijital çözümleri sunduğunu görür.
+      </p>
+    </div>
+
+    <div class="showroom-filter reveal">
+      <button class="showroom-chip active" data-sector="all">Tümü</button>
+      <button class="showroom-chip" data-sector="law">Hukuk</button>
+      <button class="showroom-chip" data-sector="restaurant">Restoran</button>
+      <button class="showroom-chip" data-sector="clinic">Klinik</button>
+      <button class="showroom-chip" data-sector="realestate">Emlak</button>
+      <button class="showroom-chip" data-sector="beauty">Güzellik</button>
+      <button class="showroom-chip" data-sector="hotel">Otel</button>
+      <button class="showroom-chip" data-sector="corporate">Kurumsal</button>
+    </div>
+
+    <div class="showroom-grid" id="showroomGrid">
+      <!-- JS dolduracak -->
+    </div>
+  </div>
+</section>
+    <section class="sectors section" id="sectors">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">SEKTÖREL ÇÖZÜMLER</p>
+          <h2>Her sektöre aynı tasarım değil, doğru dijital deneyim gerekir</h2>
+          <p>İş koluna göre değişen yapı, tasarım dili ve içerik akışı ile daha güçlü sonuç alırsın.</p>
+        </div>
+
+        <div class="sector-tabs reveal">
+          <button class="sector-tab active" data-sector="law">Avukat</button>
+          <button class="sector-tab" data-sector="restaurant">Restoran</button>
+          <button class="sector-tab" data-sector="clinic">Klinik</button>
+          <button class="sector-tab" data-sector="realestate">Emlak</button>
+        </div>
+
+        <div class="sector-panels">
+          <div class="sector-panel active glass reveal" id="law">
+            <div class="sector-info">
+              <h3>Avukat ve Hukuk Büroları</h3>
+              <p>Kurumsal, güven veren ve prestij odaklı web deneyimi ile danışan güvenini artıran yapı.</p>
+              <ul>
+                <li>Uzmanlık alanları sayfası</li>
+                <li>Randevu ve iletişim formu</li>
+                <li>Kurumsal renk ve prestijli görünüm</li>
+                <li>Mobil uyumlu güçlü kullanıcı deneyimi</li>
+              </ul>
+            </div>
+            <div class="sector-mockup sector-law">
+              <div class="mockup-window">
+                <div class="mockup-bar"></div>
+                <div class="mockup-content">
+                  <h4>Yılmaz Hukuk Bürosu</h4>
+                  <p>Hukuki güven, profesyonel duruş ve net iletişim.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sector-panel glass" id="restaurant">
+            <div class="sector-info">
+              <h3>Restoran ve Kafeler</h3>
+              <p>QR menü, rezervasyon, kampanya duyuruları ve 360 mekan gezisi ile dikkat çekici restoran deneyimi.</p>
+              <ul>
+                <li>QR Menü entegrasyonu</li>
+                <li>Masa rezervasyon alanı</li>
+                <li>360 mekan turu bağlantısı</li>
+                <li>Lezzet odaklı modern tasarım</li>
+              </ul>
+            </div>
+            <div class="sector-mockup sector-restaurant">
+              <div class="mockup-phone">
+                <div class="mockup-screen">
+                  <h4>Lezzet Bahçesi</h4>
+                  <p>QR Menü / Rezervasyon / Kampanya</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sector-panel glass" id="clinic">
+            <div class="sector-info">
+              <h3>Klinik ve Sağlık Merkezleri</h3>
+              <p>Temiz, güven veren ve randevu odaklı tasarımlar ile hasta güvenini artıran yapı.</p>
+              <ul>
+                <li>Doktor profilleri</li>
+                <li>Online randevu</li>
+                <li>Hizmet alanları tanıtımı</li>
+                <li>Kurumsal güven odaklı tasarım</li>
+              </ul>
+            </div>
+            <div class="sector-mockup sector-clinic">
+              <div class="mockup-window">
+                <div class="mockup-bar"></div>
+                <div class="mockup-content">
+                  <h4>Nova Klinik</h4>
+                  <p>Güvenilir sağlık deneyimi ve dijital kolaylık.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sector-panel glass" id="realestate">
+            <div class="sector-info">
+              <h3>Emlak ve Gayrimenkul</h3>
+              <p>Portföy sunumu, 360 daire gezisi ve yüksek görsel kalite ile ilan deneyimini güçlendiren yapı.</p>
+              <ul>
+                <li>Portföy listeleme</li>
+                <li>360 iç mekan turu</li>
+                <li>Hızlı teklif ve iletişim</li>
+                <li>Güven veren kurumsal sunum</li>
+              </ul>
+            </div>
+            <div class="sector-mockup sector-realestate">
+              <div class="mockup-window">
+                <div class="mockup-bar"></div>
+                <div class="mockup-content">
+                  <h4>Prime Emlak</h4>
+                  <p>Portföy, lokasyon ve dijital gezi deneyimi.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="immersive section" id="immersive">
+ 
+    </section>
+
+    <section class="qr-section section">
+      <div class="container qr-grid">
+        <div class="qr-visual reveal">
+          <div class="qr-phone glass">
+            <div class="qr-screen">
+              <div class="qr-title">Restoran QR Menü</div>
+              <div class="qr-category">Ana Yemekler</div>
+              <div class="qr-product">
+                <span>Et Şiş</span>
+                <strong>290₺</strong>
+              </div>
+              <div class="qr-product">
+                <span>Izgara Tavuk</span>
+                <strong>220₺</strong>
+              </div>
+              <div class="qr-product">
+                <span>Limonata</span>
+                <strong>75₺</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qr-content reveal">
+          <p class="eyebrow">QR MENÜ ÇÖZÜMÜ</p>
+          <h2>Restoranlar için hızlı, modern ve premium menü deneyimi</h2>
+          <p>
+            Müşteri QR kodu okutur, menüye anında ulaşır. Hem modern görünürsün hem de menü yönetimini kolaylaştırırsın.
+          </p>
+          <ul class="feature-list">
+            <li>Mobil uyumlu arayüz</li>
+            <li>Şık kategori yapısı</li>
+            <li>Kolay ürün sunumu</li>
+            <li>Kurumsal görünüm ve hız</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="results section" id="results">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">NEDEN PALMAJANS?</p>
+          <h2>Sadece estetik değil, görünürlük ve güven odaklı çalışıyoruz</h2>
+          <p>
+            Web siteleri sadece güzel görünmek için değil; müşteri kazanmak, güven vermek ve dijitalde güçlü görünmek için tasarlanmalı.
+          </p>
+        </div>
+
+        <div class="results-grid">
+          <article class="result-card reveal glass">
+            <h3>Google’da Üst Sıra Hedefi</h3>
+            <p>Kesin vaatler yerine güçlü teknik SEO altyapısı, doğru içerik yapısı ve görünürlük odaklı strateji kuruyoruz.</p>
+          </article>
+
+          <article class="result-card reveal glass">
+            <h3>Dijital Güven ve Prestij</h3>
+            <p>İnsanlar önce görünüşe karar verir. Profesyonel tasarım ile markanın algısını güçlendiriyoruz.</p>
+          </article>
+
+          <article class="result-card reveal glass">
+            <h3>Sektöre Özel Yaklaşım</h3>
+            <p>Avukata ayrı, restorana ayrı, kliniğe ayrı deneyim tasarlayarak daha güçlü sonuç elde ediyoruz.</p>
+          </article>
+
+          <article class="result-card reveal glass">
+            <h3>Canlı Demo Mantığı</h3>
+            <p>Müşterine “yaparız” demiyoruz; “işte böyle görünür” diyerek örnek deneyim sunuyoruz.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process section" id="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">SÜREÇ</p>
+          <h2>Projeleri nasıl ilerletiyoruz?</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <span>01</span>
+            <h3>Analiz</h3>
+            <p>Marka, hedef kitle, sektör ve ihtiyaçları netleştiriyoruz.</p>
+          </div>
+          <div class="timeline-item reveal">
+            <span>02</span>
+            <h3>Strateji</h3>
+            <p>İçerik, tasarım dili, kullanıcı akışı ve sayfa yapısını kuruyoruz.</p>
+          </div>
+          <div class="timeline-item reveal">
+            <span>03</span>
+            <h3>Tasarım + Kod</h3>
+            <p>Animasyonlu, hızlı, mobil uyumlu ve premium arayüz geliştiriyoruz.</p>
+          </div>
+          <div class="timeline-item reveal">
+            <span>04</span>
+            <h3>Yayın + Gelişim</h3>
+            <p>SEO kontrolleri sonrası yayına alıyor, büyümeye uygun hale getiriyoruz.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta section">
+      <div class="container">
+        <div class="cta-box reveal glass">
+          <p class="eyebrow">SEKTÖRÜNE ÖZEL DEMO</p>
+          <h2>İşletmene özel örnek dijital sunum hazırlayalım</h2>
+          <p>
+            Avukat, restoran, klinik, emlak ya da kurumsal firma fark etmez.
+            Sektörüne uygun güçlü bir dijital yüz oluşturalım.
+          </p>
+          <a href="#contact" class="btn btn-primary">Özel Demo Talep Et</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-left reveal">
+          <p class="eyebrow">İLETİŞİM</p>
+          <h2>Markanı dijitalde güçlü gösterecek yapıyı birlikte kuralım</h2>
+          <p>Projeni anlat, sana sektörüne uygun profesyonel bir çözüm sunalım.</p>
+
+          <div class="contact-points">
+            <div class="contact-point">
+              <strong>Hizmetler</strong>
+              <span>Web Tasarım / 360 Tur / QR Menü / Dijital Kartvizit / SEO</span>
+            </div>
+            <div class="contact-point">
+              <strong>Marka</strong>
+              <span>PALMAJANS</span>
+            </div>
+            <div class="contact-point">
+              <strong>Yaklaşım</strong>
+              <span>Kurumsal, dikkat çekici, sonuç odaklı</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal glass">
+          <div class="form-row">
+            <input type="text" placeholder="Ad Soyad" aria-label="Ad Soyad" />
+            <input type="text" placeholder="İşletme Adı" aria-label="İşletme Adı" />
+          </div>
+          <div class="form-row">
+            <input type="email" placeholder="E-posta" aria-label="E-posta" />
+            <input type="tel" placeholder="Telefon" aria-label="Telefon" />
+          </div>
+          <textarea rows="6" placeholder="Projenizi kısaca anlatın..." aria-label="Proje Mesajı"></textarea>
+          <button type="submit" class="btn btn-primary form-btn">Teklif İste</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="#top" class="logo footer-logo">
+          <span class="logo-mark">P</span>
+          <span class="logo-text">PALMAJANS</span>
+        </a>
+        <p>Web tasarım, 360 sanal tur, QR menü, dijital kartvizit ve kurumsal dijital çözümler.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#services">Hizmetler</a>
+        <a href="#demos">Demolar</a>
+        <a href="#sectors">Sektörler</a>
+        <a href="#contact">İletişim</a>
+      </div>
+    </div>
   </footer>
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      const message = [
-        "Merhaba, ben Yunus İbin 👋",
-        "Çocukluk hayaliyle başlayan yazılım serüvenim,",
-        "yıllar içinde bir tutkudan profesyonelliğe dönüştü.",
-        "Kodladıkça öğrenen, öğrendikçe öğreten biriyim.",
-        "Gerçek projelerde yer aldım, ekip yönettim, sistemler geliştirdim.",
-        "Siber güvenlikten e-ticarete, her satırda tutku var.",
-        "Haydi, size nasıl yardımcı olabileceğimi konuşalım."
-      ];
-      let line = 0;
-      let char = 0;
-      function typeWriter() {
-        if (line < message.length) {
-          if (char < message[line].length) {
-            $('.typewriter').append(message[line].charAt(char));
-            char++;
-            setTimeout(typeWriter, 20);
-          } else {
-            $('.typewriter').append('\n');
-            line++;
-            char = 0;
-            setTimeout(typeWriter, 500); // Biraz bekle sonra yeni satıra geç
-          }
-        }
-      }
-      typeWriter();
-      $('#contact-form').on('submit', function (e) {
-        e.preventDefault();
-        alert('Mesaj gönderildi! Backend henüz yok ama yakında olur 😎');
-      });
-    });
-  </script>
-  <script>const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let stars = [];
-
-    for (let i = 0; i < 100; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5,
-        speed: Math.random() * 0.5 + 0.2
-      });
-    }
-
-    function animateStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#ffffff";
-
-      stars.forEach(star => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        star.y += star.speed;
-
-        if (star.y > canvas.height) {
-          star.y = 0;
-          star.x = Math.random() * canvas.width;
-        }
-      });
-
-      requestAnimationFrame(animateStars);
-    }
-
-    animateStars();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
