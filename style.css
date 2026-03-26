@@ -246,7 +246,7 @@ button, input, textarea {
 }
 
 .hero-text {
-  max-width: 700px;
+  max-width: 338px;
   color: var(--muted);
   font-size: 1.1rem;
   line-height: 1.85;
@@ -1038,7 +1038,7 @@ button, input, textarea {
   }
 
   .hero-inner {
-    padding: 50px 0 103px;
+    padding: 50px 0 177px;
   }
 
   .hero-left h1 {
@@ -1811,7 +1811,7 @@ button, input, textarea {
     width: 103px;
   }
   .stat-card{
-    min-width: 123px !important;
+    min-width: 104px !important;
   }
 }
 @media (max-width: 820px) {
@@ -1842,7 +1842,7 @@ button, input, textarea {
 }
 @media (max-width: 820px) {
   .brands-track > * {
-    width: 185px;
+    width: 155px;
     height: 70px;
   }
 }
@@ -1851,5 +1851,12 @@ button, input, textarea {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
+  }
+}
+@media (max-width: 820px) {
+
+
+  .btn {
+    padding: 0 8px;
   }
 }
