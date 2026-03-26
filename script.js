@@ -128,91 +128,246 @@ document.querySelectorAll(".portal").forEach((portal) => {
    QR MENU DEMO
 ========================= */
 const qrMenuData = {
-  main: [
-    {
-      title: "Izgara Bonfile",
-      desc: "Özel sos, köz sebze ve tereyağlı patates ile servis edilir.",
-      price: "420₺"
-    },
-    {
-      title: "Tavuk Supreme",
-      desc: "Kremalı mantar sos ve mevsim sebzeleri ile premium sunum.",
-      price: "290₺"
-    },
-    {
-      title: "Fettucine Alfredo",
-      desc: "Parmesan dokunuşu ve yoğun kıvamlı özel sos.",
-      price: "260₺"
-    }
-  ],
-  drink: [
-    {
-      title: "Soğuk Latte",
-      desc: "Yoğun espresso, süt ve buz ile ferah kahve deneyimi.",
-      price: "110₺"
-    },
-    {
-      title: "Limonata Special",
-      desc: "Taze nane ve doğal limon ile hazırlanan yaz içeceği.",
-      price: "95₺"
-    },
-    {
-      title: "Berry Smoothie",
-      desc: "Orman meyveli, hafif ve enerji veren özel karışım.",
-      price: "135₺"
-    }
-  ],
-  dessert: [
-    {
-      title: "San Sebastian",
-      desc: "Akışkan kıvam, hafif yanık doku ve özel sos ile sunum.",
-      price: "160₺"
-    },
-    {
-      title: "Lotus Magnolia",
-      desc: "Katmanlı krema, lotus kırıntısı ve premium sunum.",
-      price: "170₺"
-    },
-    {
-      title: "Çikolatalı Sufle",
-      desc: "Sıcak servis, yoğun kakao ve dondurma eşliği.",
-      price: "185₺"
-    }
-  ]
+  breakfast: {
+    title: "Kahvaltı Menüsü",
+    desc: "Güne keyifli ve zengin başlangıçlar",
+    items: [
+      {
+        img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=400&q=80",
+        title: "Serpme Kahvaltı",
+        desc: "Peynir çeşitleri, zeytin, bal, reçel, yumurta, sıcak ürünler ve demleme çay ile zengin sunum.",
+        price: "280₺",
+        tags: ["Popüler", "Paylaşımlık"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=400&q=80",
+        title: "Kaşarlı Menemen",
+        desc: "Domates, biber, yumurta ve eriyen kaşar peyniri ile sıcak servis.",
+        price: "110₺",
+        tags: ["Şef Önerisi"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80",
+        title: "Avokadolu Tost",
+        desc: "Ekşi mayalı ekmek, avokado ezmesi, yumurta ve taze yeşillik.",
+        price: "145₺",
+        tags: ["Yeni"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=400&q=80",
+        title: "Pankek Tabağı",
+        desc: "Meyve, çikolata sosu ve akçaağaç şurubu ile servis edilir.",
+        price: "125₺",
+        tags: ["Tatlı Kahvaltı"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=400&q=80",
+        title: "Omlet Deluxe",
+        desc: "Mantar, peynir ve yeşillik ile hazırlanmış özel omlet.",
+        price: "120₺",
+        tags: ["Protein"]
+      }
+    ]
+  },
+
+  food: {
+    title: "Ana Yemekler",
+    desc: "Doyurucu ve premium ana tabaklar",
+    items: [
+      {
+        img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80",
+        title: "Izgara Köfte",
+        desc: "Patates püresi, köz sebze ve özel sos eşliğinde servis edilir.",
+        price: "230₺",
+        tags: ["Popüler"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80",
+        title: "Tavuk Şiş",
+        desc: "Özel marine edilmiş tavuk, pilav ve mevsim salata ile.",
+        price: "210₺",
+        tags: ["Şef Önerisi"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=400&q=80",
+        title: "Dana Bonfile",
+        desc: "Yumuşak pişmiş bonfile, tereyağlı patates ve demi-glace sos.",
+        price: "420₺",
+        tags: ["Premium"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=400&q=80",
+        title: "Fettucine Alfredo",
+        desc: "Kremalı parmesan sos ve taze baharat dokunuşu.",
+        price: "190₺",
+        tags: ["Makarna"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80",
+        title: "Gurme Pizza",
+        desc: "Mozzarella, özel sos, roka ve ince hamur ile hazırlanır.",
+        price: "240₺",
+        tags: ["Yeni"]
+      }
+    ]
+  },
+
+  drink: {
+    title: "İçecekler",
+    desc: "Sıcak ve soğuk içecek seçenekleri",
+    items: [
+      {
+        img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80",
+        title: "Latte",
+        desc: "Yoğun espresso ve kremsi süt köpüğü ile hazırlanır.",
+        price: "95₺",
+        tags: ["Kahve"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=400&q=80",
+        title: "Frozen Berry",
+        desc: "Orman meyveli buzlu içecek, ferah ve canlı tat.",
+        price: "120₺",
+        tags: ["Soğuk"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=400&q=80",
+        title: "Limonata Special",
+        desc: "Taze limon, nane ve hafif soda dokunuşu.",
+        price: "85₺",
+        tags: ["Ferah"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80",
+        title: "Türk Kahvesi",
+        desc: "Geleneksel sunum ile bol köpüklü hazırlanır.",
+        price: "70₺",
+        tags: ["Klasik"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80",
+        title: "Detoks Smoothie",
+        desc: "Yeşil elma, salatalık, limon ve nane karışımı.",
+        price: "130₺",
+        tags: ["Fit"]
+      }
+    ]
+  },
+
+  dessert: {
+    title: "Tatlılar",
+    desc: "Günün en keyifli finali için seçkiler",
+    items: [
+      {
+        img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80",
+        title: "San Sebastian",
+        desc: "Akışkan dokulu özel cheesecake, sos eşliğinde servis edilir.",
+        price: "150₺",
+        tags: ["Popüler"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=400&q=80",
+        title: "Tiramisu",
+        desc: "Mascarpone kreması ve kahve aromasıyla hafif tatlı deneyimi.",
+        price: "135₺",
+        tags: ["İtalyan"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80",
+        title: "Çikolatalı Sufle",
+        desc: "Sıcak servis edilen yoğun kakao dolgusuyla hazırlanır.",
+        price: "160₺",
+        tags: ["Şef Önerisi"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=400&q=80",
+        title: "Magnolia",
+        desc: "Bisküvi, krema ve meyve katmanları ile hafif sunum.",
+        price: "125₺",
+        tags: ["Yeni"]
+      },
+      {
+        img: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=400&q=80",
+        title: "Waffle",
+        desc: "Muz, çilek ve çikolata sos ile hazırlanan sıcak waffle.",
+        price: "170₺",
+        tags: ["Tatlı Keyfi"]
+      }
+    ]
+  }
 };
 
-const qrProducts = document.getElementById("qrProducts");
+const qrMenuList = document.getElementById("qrMenuList");
 const qrTabs = document.querySelectorAll(".qr-tab");
+const qrSearchInput = document.getElementById("qrSearchInput");
+const qrCategoryTitle = document.getElementById("qrCategoryTitle");
+const qrCategoryDesc = document.getElementById("qrCategoryDesc");
+const qrCount = document.getElementById("qrCount");
 
-function renderQrProducts(category) {
-  if (!qrProducts) return;
+let activeCategory = "breakfast";
 
-  qrProducts.innerHTML = qrMenuData[category]
-    .map(
-      (item) => `
-        <article class="qr-product-card">
-          <div class="qr-product-card-top">
-            <div>
-              <h4>${item.title}</h4>
-              <p>${item.desc}</p>
-            </div>
-            <strong>${item.price}</strong>
-          </div>
-        </article>
-      `
-    )
-    .join("");
+function createQrItem(item) {
+  return `
+    <article class="qr-item">
+      <img src="${item.img}" alt="${item.title}">
+      <div class="qr-item-content">
+        <div class="qr-item-head">
+          <h5>${item.title}</h5>
+          <strong>${item.price}</strong>
+        </div>
+        <p>${item.desc}</p>
+        <div class="qr-tags">
+          ${item.tags.map(tag => `<span class="qr-tag">${tag}</span>`).join("")}
+        </div>
+      </div>
+    </article>
+  `;
 }
 
-qrTabs.forEach((tab) => {
+function renderMenu(category, searchTerm = "") {
+  const categoryData = qrMenuData[category];
+  if (!categoryData || !qrMenuList) return;
+
+  const filteredItems = categoryData.items.filter(item => {
+    const text = `${item.title} ${item.desc} ${item.tags.join(" ")}`.toLowerCase();
+    return text.includes(searchTerm.toLowerCase());
+  });
+
+  qrCategoryTitle.textContent = categoryData.title;
+  qrCategoryDesc.textContent = categoryData.desc;
+  qrCount.textContent = `${filteredItems.length} Ürün`;
+
+  qrMenuList.innerHTML = filteredItems.length
+    ? filteredItems.map(createQrItem).join("")
+    : `
+      <div class="qr-item">
+        <div class="qr-item-content">
+          <div class="qr-item-head">
+            <h5>Sonuç bulunamadı</h5>
+          </div>
+          <p>Arama kelimesini değiştirerek tekrar deneyin.</p>
+        </div>
+      </div>
+    `;
+}
+
+qrTabs.forEach(tab => {
   tab.addEventListener("click", () => {
-    qrTabs.forEach((btn) => btn.classList.remove("active"));
+    qrTabs.forEach(t => t.classList.remove("active"));
     tab.classList.add("active");
-    renderQrProducts(tab.dataset.category);
+    activeCategory = tab.dataset.cat;
+    if (qrSearchInput) qrSearchInput.value = "";
+    renderMenu(activeCategory);
   });
 });
 
-renderQrProducts("main");
+if (qrSearchInput) {
+  qrSearchInput.addEventListener("input", (e) => {
+    renderMenu(activeCategory, e.target.value);
+  });
+}
+
+renderMenu(activeCategory);
 
 /* =========================
    GENERAL SHOWROOM
