@@ -1038,7 +1038,7 @@ button, input, textarea {
   }
 
   .hero-inner {
-    padding: 50px 0 70px;
+    padding: 50px 0 103px;
   }
 
   .hero-left h1 {
@@ -1049,18 +1049,24 @@ button, input, textarea {
     height: 480px;
   }
 
-  .panel-a {
-    left: 0;
-    top: 20px;
-  }
-
+    .panel-a {
+        left: 152px;
+        top: -59px;
+    }
   .panel-b {
     right: 0;
     bottom: 30px;
   }
-
+@media (max-width: 820px) {
+  .panel-a,
+  .panel-b,
+  .floating-panel {
+    display: none !important;
+  }
+}
   .main-screen {
-    transform: none;
+    margin-top: -67px;
+      transform: perspective(1200px) rotateY(-10deg) rotateX(6deg);
   }
 
   .cta-box {
@@ -1786,5 +1792,64 @@ button, input, textarea {
   .qr-item img {
     width: 78px;
     height: 78px;
+  }
+}
+@media (max-width: 820px) {
+  .hero-stats {
+    display: flex;
+    flex-direction: row; /* yan yana */
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .hero-stats > div {
+    flex: 1; /* eşit genişlik */
+    text-align: center;
+  }
+  .stat-card.floating {
+    width: 103px;
+  }
+  .stat-card{
+    min-width: 123px !important;
+  }
+}
+@media (max-width: 820px) {
+  .brands-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 4px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .brands-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .brands-track > * {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+}
+@media (max-width: 820px) {
+  .brands-track > * {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 10px 16px;
+  }
+}
+@media (max-width: 820px) {
+  .brands-track > * {
+    width: 185px;
+    height: 70px;
+  }
+}
+@media (max-width: 820px) {
+  .brands-track {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 }
